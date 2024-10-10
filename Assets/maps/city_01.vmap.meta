@@ -1,0 +1,25 @@
+{
+  "publish": {
+    "Enabled": false,
+    "ProjectConfig": {
+      "Title": "city_01",
+      "Type": "map",
+      "Org": "local",
+      "Ident": "city_01",
+      "Schema": 0,
+      "IncludeSourceFiles": false,
+      "Resources": null,
+      "PackageReferences": [],
+      "EditorReferences": [
+        "facepunch.floor_gravel_sand_a#18656",
+        "microrost.building7out#16611",
+        "microrost.building9out#16613",
+        "softsplit.sandbox#73516"
+      ],
+      "IsWhitelistDisabled": false,
+      "Metadata": {
+        "SingleAssetSource": "maps/city_01.vmap"
+      }
+    }
+  }
+}

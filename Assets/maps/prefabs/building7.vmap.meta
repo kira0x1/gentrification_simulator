@@ -1,0 +1,23 @@
+{
+  "publish": {
+    "Enabled": false,
+    "ProjectConfig": {
+      "Title": "building7",
+      "Type": "map",
+      "Org": "local",
+      "Ident": "building7",
+      "Schema": 0,
+      "IncludeSourceFiles": false,
+      "Resources": null,
+      "PackageReferences": [],
+      "EditorReferences": [
+        "microrost.building7out#16611",
+        "microrost.building9out#16613"
+      ],
+      "IsWhitelistDisabled": false,
+      "Metadata": {
+        "SingleAssetSource": "maps/prefabs/building7.vmap"
+      }
+    }
+  }
+}

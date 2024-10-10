@@ -1,0 +1,37 @@
+@using System
+@using Kira
+@inherits PanelComponent
+@namespace Sandbox
+
+<root>
+    <div class="stats">
+    </div>
+    <navbar>
+        <button></button>
+        <button></button>
+        <button></button>
+        <button></button>
+    </navbar>
+</root>
+
+@code
+{
+    private Player Player { get; set; }
+    private City City { get; set; }
+
+    protected override void OnAwake()
+    {
+        base.OnAwake();
+
+        Player = Scene.GetAllComponents<Player>().FirstOrDefault();
+        if (!Player.IsValid()) return;
+
+        City = Player?.City;
+    }
+
+
+    /// <summary>
+    /// the hash determines if the system should be rebuilt. If it changes, it will be rebuilt
+    /// </summary>
+    protected override int BuildHash() => HashCode.Combine(City);
+}
