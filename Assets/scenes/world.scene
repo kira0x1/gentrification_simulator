@@ -37,7 +37,7 @@
       "__guid": "38798cc2-3fc6-4d2c-9a41-8f297c29d96a",
       "Flags": 0,
       "Name": "Camera",
-      "Position": "-70.60182,529.6284,87.62228",
+      "Position": "-97.00565,752.6313,112.0183",
       "Rotation": "0.03592258,0.04042668,-0.6632646,0.7464283",
       "Enabled": true,
       "Components": [
@@ -125,6 +125,10 @@
         {
           "__type": "Sandbox.CityUI",
           "__guid": "001a8de7-12ca-422c-89fc-711deaa8ec1f"
+        },
+        {
+          "__type": "Kira.Player",
+          "__guid": "b55e8600-5041-4060-9424-0cb72171ab98"
         }
       ]
     },

@@ -1,0 +1,15 @@
+﻿@using System
+@inherits Sandbox.UI.Panel
+
+<root>
+    <div class="label">@Label</div>
+    <div class="label">@Value</div>
+</root>
+
+@code
+{
+    public string Label { get; set; }
+    public string Value { get; set; }
+
+    protected override int BuildHash() => HashCode.Combine(Label, Value);
+}

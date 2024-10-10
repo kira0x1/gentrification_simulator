@@ -32,9 +32,34 @@ CityUI {
     border-radius: 3px;
   }
 
+  .stats {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    border-radius: 10px;
+    width: 250px;
+    height: 250px;
+    background-color: rgba(#222, 0.9);
+    padding: 5px 20px;
+  }
+
   .title {
     font-size: 25px;
     font-family: Poppins;
     color: #fff;
+  }
+
+  StatText {
+    color: white;
+    font-family: Poppins;
+    font-size: 18px;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
   }
 }

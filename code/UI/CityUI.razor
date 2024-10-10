@@ -5,6 +5,8 @@
 
 <root>
     <div class="stats">
+        <StatText Label="Gdp" Value=@($"{City.CityState.CityIncome}")/>
+        <StatText/>
     </div>
     <navbar>
         <button></button>
@@ -25,7 +27,6 @@
 
         Player = Scene.GetAllComponents<Player>().FirstOrDefault();
         if (!Player.IsValid()) return;
-
         City = Player?.City;
     }
 
