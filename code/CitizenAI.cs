@@ -1,10 +1,13 @@
 ﻿namespace Kira;
 
+using Sandbox.Citizen;
+
 public class CitizenAI : Component
 {
     private NavMeshAgent Agent { get; set; }
     private Waypoint waypoint;
     private WaypointManager wpManager { get; set; }
+    private CitizenAnimationHelper Anim { get; set; }
 
     private const float waitTime = 3f;
     private TimeSince timeSinceStop;
@@ -14,6 +17,7 @@ public class CitizenAI : Component
     {
         base.OnAwake();
         Agent = Components.Get<NavMeshAgent>();
+        Anim = Components.Get<CitizenAnimationHelper>();
         wpManager = Scene.Components.GetAll<WaypointManager>().FirstOrDefault();
     }
 
@@ -24,6 +28,8 @@ public class CitizenAI : Component
 
     protected override void OnUpdate()
     {
+        UpdateAnimator();
+
         if (isWaiting && timeSinceStop < waitTime)
         {
             return;
@@ -50,5 +56,10 @@ public class CitizenAI : Component
     private void UpdateNextDestination()
     {
         waypoint = wpManager.GetWaypoint();
+    }
+
+    private void UpdateAnimator()
+    {
+        Anim.WithVelocity(Agent.Velocity);
     }
 }

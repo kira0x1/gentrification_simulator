@@ -150,6 +150,20 @@
           "Separation": 0.25,
           "UpdatePosition": true,
           "UpdateRotation": true
+        },
+        {
+          "__type": "Sandbox.Citizen.CitizenAnimationHelper",
+          "__guid": "043433da-5c30-44cb-afdc-0ac7540b682f",
+          "BodyWeight": 1,
+          "EyesWeight": 1,
+          "HeadWeight": 1,
+          "LookAtEnabled": false,
+          "Target": {
+            "_type": "component",
+            "component_id": "8db18190-ca7d-4993-adec-a56b8ad2247d",
+            "go": "9b04f18d-ded2-47c6-b14f-0be6a0e29c27",
+            "component_type": "SkinnedModelRenderer"
+          }
         }
       ],
       "Children": [
@@ -407,6 +421,20 @@
           "Separation": 0.25,
           "UpdatePosition": true,
           "UpdateRotation": true
+        },
+        {
+          "__type": "Sandbox.Citizen.CitizenAnimationHelper",
+          "__guid": "13e96a07-0ed3-45d9-bdb8-9ded616ff65f",
+          "BodyWeight": 1,
+          "EyesWeight": 1,
+          "HeadWeight": 1,
+          "LookAtEnabled": false,
+          "Target": {
+            "_type": "component",
+            "component_id": "a2665816-5bee-4b4b-8832-c9661c29d69d",
+            "go": "8ecc32ee-90b3-491a-9762-a2c5d618eb09",
+            "component_type": "SkinnedModelRenderer"
+          }
         }
       ],
       "Children": [
@@ -788,8 +816,6 @@
   "Title": "world",
   "Description": "",
   "ResourceVersion": 1,
-  "__references": [
-    "softsplit.sandbox#73516"
-  ],
+  "__references": [],
   "__version": 1
 }
