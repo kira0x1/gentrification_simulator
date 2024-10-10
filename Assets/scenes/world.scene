@@ -37,8 +37,8 @@
       "__guid": "38798cc2-3fc6-4d2c-9a41-8f297c29d96a",
       "Flags": 0,
       "Name": "Camera",
-      "Position": "0,545.3428,126.1314",
-      "Rotation": "0.08184651,0.09146395,-0.6617995,0.7395653",
+      "Position": "-70.60182,529.6284,87.62228",
+      "Rotation": "0.03592258,0.04042668,-0.6632646,0.7464283",
       "Enabled": true,
       "Components": [
         {
@@ -46,7 +46,7 @@
           "__guid": "9f98817f-28e6-4723-a620-34b26c919b90",
           "BackgroundColor": "0.33333,0.46275,0.52157,1",
           "ClearFlags": "All",
-          "FieldOfView": 88.07,
+          "FieldOfView": 59.69,
           "IsMainCamera": true,
           "Orthographic": false,
           "OrthographicHeight": 1204,
@@ -108,60 +108,6 @@
       ]
     },
     {
-      "__guid": "b7117e24-52e7-4e3a-8633-0ac3049fa3b8",
-      "Flags": 0,
-      "Name": "Sun",
-      "Position": "0,448,198.2584",
-      "Rotation": "0.3814232,0.1731108,-0.8556597,0.3039662",
-      "Tags": "light_directional,light",
-      "Components": [
-        {
-          "__type": "Sandbox.DirectionalLight",
-          "__guid": "37f1443b-4ec0-415a-b9c0-576a568e775b",
-          "FogMode": "Enabled",
-          "FogStrength": 1,
-          "LightColor": "1,0.97884,0.93953,1",
-          "Shadows": true,
-          "SkyColor": "0.23306,0.24405,0.29302,1"
-        }
-      ]
-    },
-    {
-      "__guid": "584fc4e3-661f-444d-870b-9f63817d6c63",
-      "Flags": 0,
-      "Name": "2D Skybox",
-      "Tags": "skybox",
-      "Components": [
-        {
-          "__type": "Sandbox.SkyBox2D",
-          "__guid": "0b526490-2c04-4e6b-a5f8-d4ad937dfdf8",
-          "SkyIndirectLighting": true,
-          "SkyMaterial": "materials/skybox/skybox_day_01.vmat",
-          "Tint": "1,1,1,1"
-        },
-        {
-          "__type": "Sandbox.EnvmapProbe",
-          "__guid": "54303539-3e1d-4a95-b660-155da9bf5690",
-          "Texture": "textures/cubemaps/default2.vtex",
-          "Bounds": {
-            "Mins": "-512,-512,-512",
-            "Maxs": "512,512,512"
-          },
-          "DelayBetweenUpdates": 0.1,
-          "Feathering": 0.02,
-          "FrameInterval": 5,
-          "MaxDistance": 512,
-          "MultiBounce": false,
-          "Projection": "Sphere",
-          "RenderDynamically": false,
-          "TintColor": "1,1,1,1",
-          "UpdateStrategy": "OnEnabled",
-          "ZFar": 4096,
-          "ZNear": 16
-        }
-      ]
-    },
-    {
       "__guid": "fd02091c-d9a6-4dd5-9e2f-67c4b33edcfd",
       "Flags": 0,
       "Name": "Screen",
@@ -185,14 +131,25 @@
     {
       "__guid": "aaedcefe-8701-49ea-b024-437aed054b70",
       "Flags": 0,
-      "Name": "Player",
-      "Position": "0,352,0",
-      "Rotation": "0,0,0.4328552,0.9014635",
+      "Name": "Citizen 1",
+      "Position": "-149.3503,279.7151,0",
+      "Rotation": "0,0,0.03744203,0.9992989",
       "Enabled": true,
       "Components": [
         {
-          "__type": "Kira.Player",
-          "__guid": "f98e1bd7-cbb7-4b07-b5c4-595f141fe427"
+          "__type": "Kira.CitizenAI",
+          "__guid": "1ef30d3f-f67f-4b80-b8c2-52a4eb10c6c0"
+        },
+        {
+          "__type": "Sandbox.NavMeshAgent",
+          "__guid": "40711dd7-7abb-4ff8-9434-a6f378aa7b00",
+          "Acceleration": 120,
+          "Height": 76,
+          "MaxSpeed": 120,
+          "Radius": 16,
+          "Separation": 0.25,
+          "UpdatePosition": true,
+          "UpdateRotation": true
         }
       ],
       "Children": [
@@ -205,7 +162,7 @@
             {
               "__type": "Sandbox.SkinnedModelRenderer",
               "__guid": "8db18190-ca7d-4993-adec-a56b8ad2247d",
-              "BodyGroups": 341,
+              "BodyGroups": 65,
               "CreateBoneObjects": false,
               "Model": "models/citizen/citizen.vmdl",
               "Morphs": {},
@@ -352,7 +309,6 @@
               "__guid": "d40bf0cd-4c76-46b2-a18a-7b8985f158c9",
               "Flags": 0,
               "Name": "Beard",
-              "Position": "-0.000009540906,0.00001190805,27.68923",
               "Enabled": true,
               "Components": [
                 {
@@ -366,7 +322,7 @@
                     "component_type": "SkinnedModelRenderer"
                   },
                   "CreateBoneObjects": false,
-                  "Model": "models/citizen_clothes/hair/medium_beard/models/medium_beard.vmdl",
+                  "Model": "models/citizen_clothes/hair/patchy_beard/models/patchy_beard.vmdl",
                   "Morphs": {},
                   "Parameters": {
                     "bools": {},
@@ -382,7 +338,7 @@
                     "AfterUILayer": false
                   },
                   "RenderType": "On",
-                  "Tint": "0.27349,0.39157,0.4,1",
+                  "Tint": "0.18605,0.18605,0.18605,1",
                   "UseAnimGraph": true
                 }
               ]
@@ -430,6 +386,263 @@
       ]
     },
     {
+      "__guid": "c74ae1aa-fe9e-434c-9685-6a2794df9495",
+      "Flags": 0,
+      "Name": "Citizen 2",
+      "Position": "23.25892,220.3069,0",
+      "Rotation": "0,0,0.8917454,0.4525373",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Kira.CitizenAI",
+          "__guid": "e6566efb-db61-40d2-a3fb-517e67512687"
+        },
+        {
+          "__type": "Sandbox.NavMeshAgent",
+          "__guid": "bfe3c864-3dc7-4e5b-a21e-fe3889c628a3",
+          "Acceleration": 120,
+          "Height": 76,
+          "MaxSpeed": 120,
+          "Radius": 16,
+          "Separation": 0.25,
+          "UpdatePosition": true,
+          "UpdateRotation": true
+        }
+      ],
+      "Children": [
+        {
+          "__guid": "8ecc32ee-90b3-491a-9762-a2c5d618eb09",
+          "Flags": 0,
+          "Name": "Model",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.SkinnedModelRenderer",
+              "__guid": "a2665816-5bee-4b4b-8832-c9661c29d69d",
+              "BodyGroups": 65,
+              "CreateBoneObjects": false,
+              "Model": "models/citizen/citizen.vmdl",
+              "Morphs": {},
+              "Parameters": {
+                "bools": {},
+                "ints": {},
+                "floats": {},
+                "vectors": {},
+                "rotations": {}
+              },
+              "RenderOptions": {
+                "GameLayer": true,
+                "OverlayLayer": false,
+                "BloomLayer": false,
+                "AfterUILayer": false
+              },
+              "RenderType": "On",
+              "Tint": "1,1,1,1",
+              "UseAnimGraph": true
+            }
+          ]
+        },
+        {
+          "__guid": "a782ea90-6586-4574-b547-4bd98cf5350d",
+          "Flags": 0,
+          "Name": "Clothes",
+          "Enabled": true,
+          "Children": [
+            {
+              "__guid": "a8b96f17-8482-4de0-a768-b357501d453c",
+              "Flags": 0,
+              "Name": "Shoes",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.SkinnedModelRenderer",
+                  "__guid": "f091b90a-6fe7-4364-9403-6da0d9df2561",
+                  "BodyGroups": 18446744073709551615,
+                  "BoneMergeTarget": {
+                    "_type": "component",
+                    "component_id": "a2665816-5bee-4b4b-8832-c9661c29d69d",
+                    "go": "8ecc32ee-90b3-491a-9762-a2c5d618eb09",
+                    "component_type": "SkinnedModelRenderer"
+                  },
+                  "CreateBoneObjects": false,
+                  "Model": "models/citizen_clothes/shoes/boots/models/black_boots.vmdl",
+                  "Morphs": {},
+                  "Parameters": {
+                    "bools": {},
+                    "ints": {},
+                    "floats": {},
+                    "vectors": {},
+                    "rotations": {}
+                  },
+                  "RenderOptions": {
+                    "GameLayer": true,
+                    "OverlayLayer": false,
+                    "BloomLayer": false,
+                    "AfterUILayer": false
+                  },
+                  "RenderType": "On",
+                  "Tint": "1,1,1,1",
+                  "UseAnimGraph": true
+                }
+              ]
+            },
+            {
+              "__guid": "dbc45065-840f-4ba7-b41a-4ddb77b5166f",
+              "Flags": 0,
+              "Name": "Pants",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.SkinnedModelRenderer",
+                  "__guid": "4b8e4b58-e28a-4f35-9634-e9f85ab94e8e",
+                  "BodyGroups": 18446744073709551615,
+                  "BoneMergeTarget": {
+                    "_type": "component",
+                    "component_id": "a2665816-5bee-4b4b-8832-c9661c29d69d",
+                    "go": "8ecc32ee-90b3-491a-9762-a2c5d618eb09",
+                    "component_type": "SkinnedModelRenderer"
+                  },
+                  "CreateBoneObjects": false,
+                  "Model": "models/citizen_clothes/trousers/smarttrousers/smarttrousers.vmdl",
+                  "Morphs": {},
+                  "Parameters": {
+                    "bools": {},
+                    "ints": {},
+                    "floats": {},
+                    "vectors": {},
+                    "rotations": {}
+                  },
+                  "RenderOptions": {
+                    "GameLayer": true,
+                    "OverlayLayer": false,
+                    "BloomLayer": false,
+                    "AfterUILayer": false
+                  },
+                  "RenderType": "On",
+                  "Tint": "1,1,1,1",
+                  "UseAnimGraph": true
+                }
+              ]
+            },
+            {
+              "__guid": "18575711-8109-437f-8a48-b37fb7773da3",
+              "Flags": 0,
+              "Name": "Shirt",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.SkinnedModelRenderer",
+                  "__guid": "e99cdffc-120d-44f8-9d65-1e9a3e999e03",
+                  "BodyGroups": 18446744073709551615,
+                  "BoneMergeTarget": {
+                    "_type": "component",
+                    "component_id": "a2665816-5bee-4b4b-8832-c9661c29d69d",
+                    "go": "8ecc32ee-90b3-491a-9762-a2c5d618eb09",
+                    "component_type": "SkinnedModelRenderer"
+                  },
+                  "CreateBoneObjects": false,
+                  "Model": "models/citizen_clothes/shirt/buttoned_shirt/models/buttoned_shirt.vmdl",
+                  "Morphs": {},
+                  "Parameters": {
+                    "bools": {},
+                    "ints": {},
+                    "floats": {},
+                    "vectors": {},
+                    "rotations": {}
+                  },
+                  "RenderOptions": {
+                    "GameLayer": true,
+                    "OverlayLayer": false,
+                    "BloomLayer": false,
+                    "AfterUILayer": false
+                  },
+                  "RenderType": "On",
+                  "Tint": "1,1,1,1",
+                  "UseAnimGraph": true
+                }
+              ]
+            },
+            {
+              "__guid": "f0e97561-e11f-4737-a973-2581fd27d342",
+              "Flags": 0,
+              "Name": "Beard",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.SkinnedModelRenderer",
+                  "__guid": "cb870329-a3a3-4860-a054-9c405db587ba",
+                  "BodyGroups": 18446744073709551615,
+                  "BoneMergeTarget": {
+                    "_type": "component",
+                    "component_id": "a2665816-5bee-4b4b-8832-c9661c29d69d",
+                    "go": "8ecc32ee-90b3-491a-9762-a2c5d618eb09",
+                    "component_type": "SkinnedModelRenderer"
+                  },
+                  "CreateBoneObjects": false,
+                  "Model": "models/citizen_clothes/hair/medium_beard/models/medium_beard.vmdl",
+                  "Morphs": {},
+                  "Parameters": {
+                    "bools": {},
+                    "ints": {},
+                    "floats": {},
+                    "vectors": {},
+                    "rotations": {}
+                  },
+                  "RenderOptions": {
+                    "GameLayer": true,
+                    "OverlayLayer": false,
+                    "BloomLayer": false,
+                    "AfterUILayer": false
+                  },
+                  "RenderType": "On",
+                  "Tint": "0.06512,0.04957,0.04392,1",
+                  "UseAnimGraph": true
+                }
+              ]
+            },
+            {
+              "__guid": "e31f6d1c-1729-4408-9665-1527f027a714",
+              "Flags": 0,
+              "Name": "Head",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.SkinnedModelRenderer",
+                  "__guid": "edbb6361-2101-4def-b4be-9346e2f62851",
+                  "BodyGroups": 18446744073709551615,
+                  "BoneMergeTarget": {
+                    "_type": "component",
+                    "component_id": "a2665816-5bee-4b4b-8832-c9661c29d69d",
+                    "go": "8ecc32ee-90b3-491a-9762-a2c5d618eb09",
+                    "component_type": "SkinnedModelRenderer"
+                  },
+                  "CreateBoneObjects": false,
+                  "Model": "models/citizen_clothes/hair/hair_looseblonde/hair_looseblonde.vmdl",
+                  "Morphs": {},
+                  "Parameters": {
+                    "bools": {},
+                    "ints": {},
+                    "floats": {},
+                    "vectors": {},
+                    "rotations": {}
+                  },
+                  "RenderOptions": {
+                    "GameLayer": true,
+                    "OverlayLayer": false,
+                    "BloomLayer": false,
+                    "AfterUILayer": false
+                  },
+                  "RenderType": "On",
+                  "Tint": "0.04186,0.0346,0.03174,1",
+                  "UseAnimGraph": true
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
       "__guid": "00981d7a-91ec-434a-85e6-71eb6f92bc4d",
       "Flags": 0,
       "Name": "Map",
@@ -452,8 +665,8 @@
     {
       "__guid": "85d7ca6b-2a2a-41a3-b475-e5650e584abd",
       "Flags": 0,
-      "Name": "Sphere (2)",
-      "Position": "25.37877,210.5796,199.4926",
+      "Name": "Ball",
+      "Position": "-61.54837,210.5796,199.4926",
       "Scale": "0.5,0.5,0.5",
       "Enabled": true,
       "Components": [
@@ -494,6 +707,60 @@
           "StartAsleep": false
         }
       ]
+    },
+    {
+      "__guid": "3c1dd8fc-c16f-4a64-bd9b-52874cf06136",
+      "Flags": 0,
+      "Name": "Waypoints",
+      "Position": "-115.1474,253.1091,1",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Kira.WaypointManager",
+          "__guid": "db35e3a1-7932-4ea8-a768-6c8e21fa93a8"
+        }
+      ],
+      "Children": [
+        {
+          "__guid": "8d617b60-7815-4d08-8527-e27ffa3c9af3",
+          "Flags": 0,
+          "Name": "wp 1",
+          "Position": "0,0,7.906822",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Kira.Waypoint",
+              "__guid": "20a168e6-9a7e-4dc4-bf64-f09b1098fbb5"
+            }
+          ]
+        },
+        {
+          "__guid": "e92f657f-4b2c-4368-a3bc-0818ad191327",
+          "Flags": 0,
+          "Name": "wp 2",
+          "Position": "147.1474,98.8909,7.906822",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Kira.Waypoint",
+              "__guid": "d976d6d9-f2c9-4905-94a6-41d6f2172ba8"
+            }
+          ]
+        },
+        {
+          "__guid": "6c02c158-d607-4c5d-8695-f8ea2cdb132e",
+          "Flags": 0,
+          "Name": "wp 3",
+          "Position": "319.6093,1.101654,7.906822",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Kira.Waypoint",
+              "__guid": "59306def-73a8-4cca-acd7-907d60a96fb0"
+            }
+          ]
+        }
+      ]
     }
   ],
   "SceneProperties": {
@@ -506,7 +773,7 @@
     "TimeScale": 1,
     "UseFixedUpdate": true,
     "NavMesh": {
-      "Enabled": false,
+      "Enabled": true,
       "IncludeStaticBodies": true,
       "IncludeKeyframedBodies": true,
       "EditorAutoUpdate": true,
