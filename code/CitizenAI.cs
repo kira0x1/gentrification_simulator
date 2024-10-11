@@ -69,13 +69,15 @@ public class CitizenAI : Component
 
         float dist = Vector3.DistanceBetween(Agent.AgentPosition, waypoint.WorldPosition);
 
-        if (dist < 20f)
+        if (dist < 30f)
         {
             timeSinceStop = 0;
             Agent.Stop();
+            Agent.MoveTo(Agent.AgentPosition);
             Agent.Velocity = Vector3.Zero;
             Agent.UpdateRotation = false;
             isWaiting = true;
+            return;
         }
 
         Agent.MoveTo(waypoint.WorldPosition);

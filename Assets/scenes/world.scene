@@ -139,6 +139,16 @@
       "__PrefabVariables": {}
     },
     {
+      "__guid": "921dc50e-4ced-4ab7-b961-8bf52965f472",
+      "Flags": 0,
+      "Name": "Citizen 2 (1)",
+      "Position": "-93.31262,233.5907,0",
+      "Rotation": "0,0,0.6506869,0.7593462",
+      "Enabled": true,
+      "__Prefab": "prefabs/citizen prefab.prefab",
+      "__PrefabVariables": {}
+    },
+    {
       "__guid": "00981d7a-91ec-434a-85e6-71eb6f92bc4d",
       "Flags": 0,
       "Name": "Map",
@@ -266,6 +276,58 @@
             {
               "__type": "Kira.Waypoint",
               "__guid": "f50b4d9c-4ebf-46ec-bd3f-ca7b8e62eb20"
+            }
+          ]
+        },
+        {
+          "__guid": "62ed829f-8e58-41ee-b992-59896f75148a",
+          "Flags": 0,
+          "Name": "wp 5",
+          "Position": "-407.8505,-61.1091,7.906822",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Kira.Waypoint",
+              "__guid": "4a00a60d-8a44-4ad4-93f2-8ba29505e303"
+            }
+          ]
+        },
+        {
+          "__guid": "3065bb1f-ed57-4223-96fc-dc5c19a90b59",
+          "Flags": 0,
+          "Name": "wp 6",
+          "Position": "-234.4352,-179.0899,7.906822",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Kira.Waypoint",
+              "__guid": "948f6776-9e6c-4910-aeaf-c47c4cbdb0bf"
+            }
+          ]
+        },
+        {
+          "__guid": "0adc357b-0af6-496d-b293-b5aadb880c5e",
+          "Flags": 0,
+          "Name": "wp 7",
+          "Position": "93.96159,-13.29317,7.906822",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Kira.Waypoint",
+              "__guid": "5484b19f-9242-4b07-abb7-11bede46d1f6"
+            }
+          ]
+        },
+        {
+          "__guid": "4343c9cb-4d22-4e1d-8bfa-6832715188fc",
+          "Flags": 0,
+          "Name": "wp 8",
+          "Position": "266.7548,-69.82642,7.906822",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Kira.Waypoint",
+              "__guid": "ead98d1d-68a1-4584-8d7a-23ef0427a1fe"
             }
           ]
         }
