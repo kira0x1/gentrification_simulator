@@ -6,13 +6,14 @@
 <root>
     <div class="stats">
         <StatText Label="Gdp" Value=@($"{City.CityState.CityIncome}")/>
-        <StatText/>
+        <StatText Label="Population" Value=@($"{City.Population}")/>
+        <StatText Label="Homeless" Value=@($"{City.Homelessness}")/>
     </div>
     <navbar>
-        <button></button>
-        <button></button>
-        <button></button>
-        <button></button>
+        <SlotBtn Icon="group_add" OnClickAction=@(() => CityManager.SpawnCitizen())/>
+        <SlotBtn/>
+        <SlotBtn/>
+        <SlotBtn/>
     </navbar>
 </root>
 
@@ -20,16 +21,16 @@
 {
     private Player Player { get; set; }
     private City City { get; set; }
+    private CityManager CityManager { get; set; }
 
     protected override void OnAwake()
     {
         base.OnAwake();
 
-        Player = Scene.GetAllComponents<Player>().FirstOrDefault();
-        if (!Player.IsValid()) return;
-        City = Player?.City;
+        CityManager = Scene.GetAllComponents<CityManager>().FirstOrDefault();
+        if (!CityManager.IsValid()) return;
+        City = CityManager.City;
     }
-
 
     /// <summary>
     /// the hash determines if the system should be rebuilt. If it changes, it will be rebuilt

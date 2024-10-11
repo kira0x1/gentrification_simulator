@@ -4,7 +4,9 @@ using Sandbox.Citizen;
 
 public class CitizenAI : Component
 {
-    private NavMeshAgent Agent { get; set; }
+    public NavMeshAgent Agent { get; set; }
+    public CitizenState CitizenState { get; set; }
+
     private Waypoint waypoint;
     private WaypointManager wpManager { get; set; }
     private CitizenAnimationHelper Anim { get; set; }
@@ -13,12 +15,28 @@ public class CitizenAI : Component
     private TimeSince timeSinceStop;
     private bool isWaiting;
 
+    [Property, Group("Clothes")] public SkinnedModelRenderer Hair { get; set; }
+    [Property, Group("Clothes")] public SkinnedModelRenderer Beard { get; set; }
+    [Property, Group("Clothes")] public SkinnedModelRenderer Pants { get; set; }
+    [Property, Group("Clothes")] public SkinnedModelRenderer Shirt { get; set; }
+
     protected override void OnAwake()
     {
         base.OnAwake();
         Agent = Components.Get<NavMeshAgent>();
         Anim = Components.Get<CitizenAnimationHelper>();
         wpManager = Scene.Components.GetAll<WaypointManager>().FirstOrDefault();
+    }
+
+    public void SetCitizenState(CitizenState state)
+    {
+        CitizenState = state;
+
+        Hair.Model = state.hairModel;
+        Hair.Tint = state.hairColor;
+
+        Beard.Model = state.beardModel;
+        Beard.Tint = state.hairColor;
     }
 
     protected override void OnStart()

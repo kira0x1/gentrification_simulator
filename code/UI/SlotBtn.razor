@@ -1,0 +1,15 @@
+﻿@using System
+@inherits Sandbox.UI.Panel
+
+<root>
+    <button onclick=@OnClickAction>
+        <i>@Icon</i>
+    </button>
+</root>
+
+@code
+{
+    public string Icon { get; set; }
+    public Action OnClickAction { get; set; }
+    protected override int BuildHash() => HashCode.Combine(Icon);
+}
