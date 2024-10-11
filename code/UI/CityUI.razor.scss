@@ -13,7 +13,7 @@ CityUI {
     background-color: rgba(#323232, 1);
     border-radius: 5px;
     width: 520px;
-    height: 5vw;
+    height: 110px;
 
     position: absolute;
     bottom: 40px;
@@ -21,12 +21,11 @@ CityUI {
     align-items: center;
     justify-content: center;
     padding: 0 10px;
-
-    gap: 12px;
+    gap: 10px;
   }
 
   SlotBtn {
-    width: 120px;
+    width: 30%;
     height: 80%;
     background: #555;
     border-radius: 3px;
@@ -40,6 +39,14 @@ CityUI {
     i {
       color: white;
       font-size: 62px;
+    }
+
+    .key {
+      left: 18px;
+      top: 16px;
+      position: absolute;
+      color: white;
+      font-size: 22px;
     }
   }
 

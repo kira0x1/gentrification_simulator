@@ -4,11 +4,16 @@
 <root>
     <button onclick=@OnClickAction>
         <i>@Icon</i>
+        @if (KeyLabel != null)
+        {
+            <div class="key">@KeyLabel</div>
+        }
     </button>
 </root>
 
 @code
 {
+    public string KeyLabel { get; set; }
     public string Icon { get; set; }
     public Action OnClickAction { get; set; }
     protected override int BuildHash() => HashCode.Combine(Icon);

@@ -10,7 +10,7 @@
         <StatText Label="Homeless" Value=@($"{City.Homelessness}")/>
     </div>
     <navbar>
-        <SlotBtn Icon="group_add" OnClickAction=@(() => CityManager.SpawnCitizen())/>
+        <SlotBtn Icon="group_add" KeyLabel="1" OnClickAction=@(() => CityManager.SpawnCitizen())/>
         <SlotBtn/>
         <SlotBtn/>
         <SlotBtn/>
@@ -23,6 +23,8 @@
     private City City { get; set; }
     private CityManager CityManager { get; set; }
 
+    public readonly CityAction[] CityActions = new CityAction[1];
+
     protected override void OnAwake()
     {
         base.OnAwake();
@@ -30,6 +32,16 @@
         CityManager = Scene.GetAllComponents<CityManager>().FirstOrDefault();
         if (!CityManager.IsValid()) return;
         City = CityManager.City;
+
+        CityActions[0] = new CityAction(() => CityManager.SpawnCitizen(), 0.1f);
+    }
+
+    protected override void OnUpdate()
+    {
+        if (Input.Down("Slot1"))
+        {
+            CityActions[0].Use();
+        }
     }
 
     /// <summary>
