@@ -39,8 +39,8 @@
         "Acceleration": 80,
         "Height": 76,
         "MaxSpeed": 60,
-        "Radius": 16,
-        "Separation": 0.25,
+        "Radius": 18,
+        "Separation": 0.4,
         "UpdatePosition": true,
         "UpdateRotation": true
       },

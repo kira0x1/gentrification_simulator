@@ -1,5 +1,6 @@
 ﻿namespace Kira;
 
+using System;
 using Sandbox.Citizen;
 
 public class CitizenAI : Component
@@ -11,7 +12,10 @@ public class CitizenAI : Component
     private WaypointManager wpManager { get; set; }
     private CitizenAnimationHelper Anim { get; set; }
 
-    private const float waitTime = 3f;
+    private const float minWaitTime = 2f;
+    private const float maxWaitTime = 4.5f;
+    private float waitTime = 3f;
+
     private TimeSince timeSinceStop;
     private bool isWaiting;
 
@@ -36,7 +40,12 @@ public class CitizenAI : Component
         Hair.Tint = state.hairColor;
 
         Beard.Model = state.beardModel;
-        Beard.Tint = state.hairColor;
+
+        // Make it a little darker then hair
+        Beard.Tint = Color.Lerp(state.hairColor, Color.Black, 0.5f);
+
+        Shirt.Model = state.shirtModel;
+        Pants.Model = state.pantsModel;
     }
 
     protected override void OnStart()
@@ -55,16 +64,17 @@ public class CitizenAI : Component
 
         if (isWaiting && timeSinceStop > waitTime)
         {
-            isWaiting = false;
             UpdateNextDestination();
         }
 
         float dist = Vector3.DistanceBetween(Agent.AgentPosition, waypoint.WorldPosition);
 
-        if (dist < 12f)
+        if (dist < 20f)
         {
             timeSinceStop = 0;
             Agent.Stop();
+            Agent.Velocity = Vector3.Zero;
+            Agent.UpdateRotation = false;
             isWaiting = true;
         }
 
@@ -74,10 +84,15 @@ public class CitizenAI : Component
     private void UpdateNextDestination()
     {
         waypoint = wpManager.GetWaypoint();
+        Agent.UpdateRotation = true;
+        Agent.UpdatePosition = true;
+        isWaiting = false;
+        waitTime = Random.Shared.Float(minWaitTime, maxWaitTime);
     }
 
     private void UpdateAnimator()
     {
         Anim.WithVelocity(Agent.Velocity);
+        Anim.WithWishVelocity(Agent.WishVelocity);
     }
 }

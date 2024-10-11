@@ -13,6 +13,7 @@ public class CityManager : Component
     [Property]
     private GameObject CitizenPrefab { get; set; }
 
+    [Property, Group("Citizen Clothes")] public List<Color> HairColors = new List<Color>();
     [Property, Group("Citizen Clothes")] public List<Model> Pants = new List<Model>();
     [Property, Group("Citizen Clothes")] public List<Model> Shirt = new List<Model>();
     [Property, Group("Citizen Clothes")] public List<Model> Hair = new List<Model>();
@@ -35,9 +36,8 @@ public class CityManager : Component
     {
         CitizenState citizenData = new CitizenState();
 
-        Color[] hairColors = { Color.Black, Color.Gray, Color.White };
+        citizenData.hairColor = Random.Shared.FromList(HairColors);
 
-        citizenData.hairColor = Random.Shared.FromArray(hairColors);
         citizenData.pantsModel = Random.Shared.FromList(Pants);
         citizenData.shirtModel = Random.Shared.FromList(Shirt);
         citizenData.hairModel = Random.Shared.FromList(Hair);
@@ -46,6 +46,7 @@ public class CityManager : Component
         var clone = CitizenPrefab.Clone(Vector3.Zero);
         CitizenAI ai = clone.Components.Get<CitizenAI>();
         ai.SetCitizenState(citizenData);
+        clone.BreakFromPrefab();
 
         CityCitizens.Add(ai);
         City.Population++;
