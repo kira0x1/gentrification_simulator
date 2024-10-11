@@ -1,8 +1,13 @@
 ﻿namespace Kira;
 
+using Utils;
+
 public struct CitizenState
 {
-    public string citizenName;
+    public string firstName;
+    public string lastName;
+    public string fullName => $"{firstName} {lastName}";
+
     public bool isHomeless;
     public int age;
 
@@ -14,4 +19,16 @@ public struct CitizenState
     public Model beardModel;
     public Model shirtModel;
     public Model pantsModel;
+
+    private static WeightedData CitizenColorWeights = new WeightedData(new[]
+    {
+        (110, 120, 800),
+        (120, 140, 5100),
+        (140, 160, 13500),
+        (160, 180, 9200),
+        (180, 190, 5000),
+        (190, 190, 0)
+    });
+
+    public Dictionary<Color, (int Min, int Max, int Weight)> WeightedColors { get; set; }
 }

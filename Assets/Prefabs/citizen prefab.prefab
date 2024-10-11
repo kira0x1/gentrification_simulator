@@ -3,6 +3,7 @@
     "__guid": "c74ae1aa-fe9e-434c-9685-6a2794df9495",
     "Flags": 0,
     "Name": "citizen prefab",
+    "Tags": "selectable",
     "Enabled": true,
     "Components": [
       {
@@ -57,6 +58,14 @@
           "go": "8ecc32ee-90b3-491a-9762-a2c5d618eb09",
           "component_type": "SkinnedModelRenderer"
         }
+      },
+      {
+        "__type": "Sandbox.BoxCollider",
+        "__guid": "226f6893-bfc9-4605-974e-21f516eea0b4",
+        "Center": "0,0,40",
+        "IsTrigger": false,
+        "Scale": "32,32,80",
+        "Static": false
       }
     ],
     "Children": [

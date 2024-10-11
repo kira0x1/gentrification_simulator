@@ -15,6 +15,7 @@
         <SlotBtn/>
         <SlotBtn/>
     </navbar>
+    <div class="sidebar"></div>
 </root>
 
 @code
@@ -33,7 +34,7 @@
         if (!CityManager.IsValid()) return;
         City = CityManager.City;
 
-        CityActions[0] = new CityAction(() => CityManager.SpawnCitizen(), 0.1f);
+        CityActions[0] = new CityAction(() => CityManager.SpawnCitizen(), 0.5f);
     }
 
     protected override void OnUpdate()

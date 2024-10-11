@@ -14,6 +14,7 @@ public class CityManager : Component
     private GameObject CitizenPrefab { get; set; }
 
     [Property, Group("Citizen Clothes")] public List<Color> HairColors = new List<Color>();
+    [Property, Group("Citizen Clothes")] public List<(Color, int)> WeightedColors { get; set; }
     [Property, Group("Citizen Clothes")] public List<Model> Pants = new List<Model>();
     [Property, Group("Citizen Clothes")] public List<Model> Shirt = new List<Model>();
     [Property, Group("Citizen Clothes")] public List<Model> Hair = new List<Model>();
@@ -22,11 +23,13 @@ public class CityManager : Component
     protected override void OnAwake()
     {
         CityCitizens = Scene.GetAllComponents<CitizenAI>().ToList();
+        RandomNames.Init();
 
         foreach (CitizenAI citizen in CityCitizens)
         {
             citizen.Agent.MaxSpeed = CitizenMaxSpeed;
             citizen.Agent.Acceleration = CitizenAcceleration;
+            citizen.SetCitizenState(GenerateCitizenData());
         }
 
         City.Population = CityCitizens.Count;
@@ -34,21 +37,32 @@ public class CityManager : Component
 
     public void SpawnCitizen()
     {
+        var citizenData = GenerateCitizenData();
+        var clone = CitizenPrefab.Clone(Vector3.Zero);
+
+        CitizenAI ai = clone.Components.Get<CitizenAI>();
+        ai.SetCitizenState(citizenData);
+
+        // Break from prefab useful when wanting to inspect citizens in scene
+        // clone.BreakFromPrefab();
+
+        CityCitizens.Add(ai);
+        City.Population++;
+    }
+
+    public CitizenState GenerateCitizenData()
+    {
         CitizenState citizenData = new CitizenState();
 
         citizenData.hairColor = Random.Shared.FromList(HairColors);
-
         citizenData.pantsModel = Random.Shared.FromList(Pants);
         citizenData.shirtModel = Random.Shared.FromList(Shirt);
         citizenData.hairModel = Random.Shared.FromList(Hair);
         citizenData.beardModel = Random.Shared.FromList(Beard);
 
-        var clone = CitizenPrefab.Clone(Vector3.Zero);
-        CitizenAI ai = clone.Components.Get<CitizenAI>();
-        ai.SetCitizenState(citizenData);
-        clone.BreakFromPrefab();
+        citizenData.firstName = RandomNames.RandomFirstName;
+        citizenData.lastName = RandomNames.RandomLastName;
 
-        CityCitizens.Add(ai);
-        City.Population++;
+        return citizenData;
     }
 }

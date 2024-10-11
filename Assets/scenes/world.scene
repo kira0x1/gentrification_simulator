@@ -125,6 +125,10 @@
         {
           "__type": "Sandbox.CityUI",
           "__guid": "001a8de7-12ca-422c-89fc-711deaa8ec1f"
+        },
+        {
+          "__type": "CursorPassthrough",
+          "__guid": "2f50a2df-7b53-45ea-b321-80ac2c299377"
         }
       ]
     },
@@ -134,6 +138,7 @@
       "Name": "Citizen 2",
       "Position": "23.25892,220.3069,0",
       "Rotation": "0,0,0.8917454,0.4525373",
+      "Tags": "selectable",
       "Enabled": true,
       "__Prefab": "prefabs/citizen prefab.prefab",
       "__PrefabVariables": {}
@@ -144,6 +149,7 @@
       "Name": "Citizen 2 (1)",
       "Position": "-93.31262,233.5907,0",
       "Rotation": "0,0,0.6506869,0.7593462",
+      "Tags": "selectable",
       "Enabled": true,
       "__Prefab": "prefabs/citizen prefab.prefab",
       "__PrefabVariables": {}
@@ -364,7 +370,8 @@
             "0.73953,0.73953,0.73953,1",
             "0.30698,0.26243,0.20418,1",
             "0.64186,0.57966,0.49259,1",
-            "0.49302,0.14676,0.14676,1"
+            "0.49302,0.14676,0.14676,1",
+            "0.49627,0.64035,0.68837,1"
           ],
           "Pants": [
             "models/citizen_clothes/trousers/smarttrousers/smarttrousers.vmdl",
@@ -380,7 +387,10 @@
           "CitizenPrefab": {
             "_type": "gameobject",
             "prefab": "prefabs/citizen prefab.prefab"
-          }
+          },
+          "WeightedColors": [
+            {}
+          ]
         }
       ]
     }

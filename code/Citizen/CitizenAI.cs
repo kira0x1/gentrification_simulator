@@ -3,7 +3,7 @@
 using System;
 using Sandbox.Citizen;
 
-public class CitizenAI : Component
+public partial class CitizenAI : Component, ISelectable
 {
     public NavMeshAgent Agent { get; set; }
     public CitizenState CitizenState { get; set; }
@@ -96,5 +96,14 @@ public class CitizenAI : Component
     {
         Anim.WithVelocity(Agent.Velocity);
         Anim.WithWishVelocity(Agent.WishVelocity);
+    }
+
+    public Guid id { get; set; }
+    public bool IsSelected { get; set; }
+    public bool IsHovering { get; set; }
+    public SelectableTypes SelectableType { get; set; } = SelectableTypes.Unit;
+
+    public void Deselect()
+    {
     }
 }
