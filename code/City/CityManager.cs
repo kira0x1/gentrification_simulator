@@ -59,6 +59,7 @@ public class CityManager : Component
         citizenData.shirtModel = Random.Shared.FromList(Shirt);
         citizenData.hairModel = Random.Shared.FromList(Hair);
         citizenData.beardModel = Random.Shared.FromList(Beard);
+        citizenData.hasBeard = Random.Shared.Float(0, 1) > 0.6f;
 
         citizenData.firstName = RandomNames.RandomFirstName;
         citizenData.lastName = RandomNames.RandomLastName;

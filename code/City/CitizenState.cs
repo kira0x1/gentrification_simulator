@@ -20,6 +20,8 @@ public struct CitizenState
     public Model shirtModel;
     public Model pantsModel;
 
+    public bool hasBeard;
+
     private static WeightedData CitizenColorWeights = new WeightedData(new[]
     {
         (110, 120, 800),

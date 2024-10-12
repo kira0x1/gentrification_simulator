@@ -49,6 +49,8 @@ public partial class CitizenAI : Component, ISelectable
 
         Shirt.Model = state.shirtModel;
         Pants.Model = state.pantsModel;
+
+        Beard.Enabled = CitizenState.hasBeard;
     }
 
     protected override void OnStart()
