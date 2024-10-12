@@ -19,6 +19,27 @@ public class City
     }
 }
 
+public static class CityActions
+{
+    public static bool HasLoaded { get; set; }
+
+    public static void Init()
+    {
+        if (HasLoaded) return;
+        actions = new List<CityAction>();
+        actions.Add(new CityAction("Test Action", "science", OnTestAction, 0.1f));
+
+        HasLoaded = true;
+    }
+
+    public static List<CityAction> actions = new List<CityAction>();
+
+    public static void OnTestAction()
+    {
+        Log.Info("Test Action");
+    }
+}
+
 public struct CityStateStat
 {
     public long TimeStamp { get; set; }

@@ -1,0 +1,31 @@
+SlotBtn {
+  pointer-events: all;
+  width: 30%;
+  height: 80%;
+  background: #555;
+  border-radius: 3px;
+  padding: 6px;
+
+  &:hover {
+    background-color: #666;
+  }
+
+  &:active {
+    background-color: #777;
+  }
+
+  button {
+    margin: auto;
+  }
+
+  i {
+    color: white;
+    font-size: 62px;
+  }
+
+  .key {
+    width: 0;
+    color: white;
+    font-size: 22px;
+  }
+}

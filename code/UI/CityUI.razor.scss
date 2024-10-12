@@ -15,39 +15,11 @@ CityUI {
     height: 110px;
 
     position: absolute;
-    bottom: 40px;
-
+    bottom: 20px;
     align-items: center;
     justify-content: center;
     padding: 0 10px;
     gap: 10px;
-  }
-
-  SlotBtn {
-    pointer-events: all;
-    width: 30%;
-    height: 80%;
-    background: #555;
-    border-radius: 3px;
-    justify-content: center;
-    align-items: center;
-
-    &:hover {
-      background-color: #666;
-    }
-
-    i {
-      color: white;
-      font-size: 62px;
-    }
-
-    .key {
-      left: 18px;
-      top: 16px;
-      position: absolute;
-      color: white;
-      font-size: 22px;
-    }
   }
 
   .stats {
@@ -62,6 +34,41 @@ CityUI {
     flex-direction: column;
     flex-grow: 0;
     gap: 10px;
+  }
+
+  .action-menu {
+    width: 320px;
+    height: 285px;
+
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+
+    background-color: rgba(#323232, 1);
+    border-radius: 7px;
+    justify-content: center;
+    align-content: center;
+  }
+
+  .container {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(#353535, 1);
+    border-radius: 6px;
+    justify-content: center;
+  }
+
+  .grid {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    gap: 8px;
+
+    .slot-btn {
+      height: 80px;
+      width: 90px;
+    }
   }
 
   .title {

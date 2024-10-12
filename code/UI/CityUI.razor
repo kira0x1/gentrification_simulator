@@ -1,5 +1,6 @@
 @using System
 @using Kira
+@using Sandbox.UI
 @inherits PanelComponent
 @namespace Sandbox
 
@@ -8,6 +9,19 @@
         <StatText Label="Gdp" Value=@($"{City.CityState.CityIncome}")/>
         <StatText Label="Population" Value=@($"{City.Population}")/>
         <StatText Label="Homeless" Value=@($"{City.Homelessness}")/>
+    </div>
+    <div class="action-menu">
+        <div class="container grid">
+            <SlotBtn Icon="group_add" KeyLabel="1" OnClickAction=@(() => CityManager.SpawnCitizen())/>
+            <SlotBtn Icon="science" KeyLabel="2"/>
+            <SlotBtn keyLabel="8"/>
+            <SlotBtn/>
+            <SlotBtn/>
+            <SlotBtn/>
+            <SlotBtn/>
+            <SlotBtn/>
+            <SlotBtn/>
+        </div>
     </div>
     <navbar>
         <SlotBtn Icon="group_add" KeyLabel="1" OnClickAction=@(() => CityManager.SpawnCitizen())/>
@@ -23,8 +37,7 @@
     private Player Player { get; set; }
     private City City { get; set; }
     private CityManager CityManager { get; set; }
-
-    public readonly CityAction[] CityActions = new CityAction[1];
+    public readonly CityAction[] cityActions = new CityAction[1];
 
     protected override void OnAwake()
     {
@@ -33,15 +46,19 @@
         CityManager = Scene.GetAllComponents<CityManager>().FirstOrDefault();
         if (!CityManager.IsValid()) return;
         City = CityManager.City;
+        cityActions[0] = new CityAction(() => CityManager.SpawnCitizen(), 0.5f);
+    }
 
-        CityActions[0] = new CityAction(() => CityManager.SpawnCitizen(), 0.5f);
+    protected override void OnStart()
+    {
+        CityActions.Init();
     }
 
     protected override void OnUpdate()
     {
         if (Input.Down("Slot1"))
         {
-            CityActions[0].Use();
+            cityActions[0].Use();
         }
     }
 

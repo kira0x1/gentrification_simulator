@@ -1,13 +1,15 @@
 ﻿@using System
 @inherits Sandbox.UI.Panel
 
-<root>
+<root class="slot-btn">
+    @if (KeyLabel != null)
+    {
+        <div class="key">@KeyLabel</div>
+    }
+
     <button onclick=@OnClickAction>
         <i>@Icon</i>
-        @if (KeyLabel != null)
-        {
-            <div class="key">@KeyLabel</div>
-        }
+
     </button>
 </root>
 
@@ -16,5 +18,15 @@
     public string KeyLabel { get; set; }
     public string Icon { get; set; }
     public Action OnClickAction { get; set; }
-    protected override int BuildHash() => HashCode.Combine(Icon);
+    protected override int BuildHash() => HashCode.Combine(Icon, KeyLabel);
+
+    public SlotBtn(string icon, string keyLabel)
+    {
+        this.Icon = icon;
+        this.KeyLabel = keyLabel;
+    }
+
+    public SlotBtn()
+    {
+    }
 }
