@@ -15,6 +15,13 @@
           "go": "f0e97561-e11f-4737-a973-2581fd27d342",
           "component_type": "SkinnedModelRenderer"
         },
+        "Body": {
+          "_type": "component",
+          "component_id": "a2665816-5bee-4b4b-8832-c9661c29d69d",
+          "go": "8ecc32ee-90b3-491a-9762-a2c5d618eb09",
+          "component_type": "SkinnedModelRenderer"
+        },
+        "GlowMaterial": "materials/selectionglow.vmat",
         "Hair": {
           "_type": "component",
           "component_id": "edbb6361-2101-4def-b4be-9346e2f62851",
@@ -64,7 +71,7 @@
         "__guid": "226f6893-bfc9-4605-974e-21f516eea0b4",
         "Center": "0,0,40",
         "IsTrigger": false,
-        "Scale": "32,32,80",
+        "Scale": "16,16,80",
         "Static": false
       }
     ],

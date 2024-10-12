@@ -2,13 +2,16 @@
 
 public partial class CitizenAI
 {
+    [Property] public Material GlowMaterial { get; set; }
+
     public void OnHover()
     {
-        // Log.Info($"Hovering: {CitizenState.firstName}");
+        Body.SetMaterialOverride(GlowMaterial, "");
     }
 
     public void OnLeaveHover()
     {
+        Body.ClearMaterialOverrides();
     }
 
 

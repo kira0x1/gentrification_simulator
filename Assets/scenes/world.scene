@@ -144,17 +144,6 @@
       "__PrefabVariables": {}
     },
     {
-      "__guid": "921dc50e-4ced-4ab7-b961-8bf52965f472",
-      "Flags": 0,
-      "Name": "Citizen 2 (1)",
-      "Position": "-93.31262,233.5907,0",
-      "Rotation": "0,0,0.6506869,0.7593462",
-      "Tags": "selectable",
-      "Enabled": true,
-      "__Prefab": "prefabs/citizen prefab.prefab",
-      "__PrefabVariables": {}
-    },
-    {
       "__guid": "00981d7a-91ec-434a-85e6-71eb6f92bc4d",
       "Flags": 0,
       "Name": "Map",

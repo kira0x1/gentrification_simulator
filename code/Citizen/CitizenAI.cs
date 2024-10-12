@@ -9,6 +9,8 @@ public partial class CitizenAI : Component, ISelectable
     public CitizenState CitizenState { get; set; }
 
     private Waypoint waypoint;
+    private Vector3 nextPos;
+
     private WaypointManager wpManager { get; set; }
     private CitizenAnimationHelper Anim { get; set; }
 
@@ -19,6 +21,7 @@ public partial class CitizenAI : Component, ISelectable
     private TimeSince timeSinceStop;
     private bool isWaiting;
 
+    [Property, Group("Clothes")] public SkinnedModelRenderer Body { get; set; }
     [Property, Group("Clothes")] public SkinnedModelRenderer Hair { get; set; }
     [Property, Group("Clothes")] public SkinnedModelRenderer Beard { get; set; }
     [Property, Group("Clothes")] public SkinnedModelRenderer Pants { get; set; }
@@ -67,7 +70,7 @@ public partial class CitizenAI : Component, ISelectable
             UpdateNextDestination();
         }
 
-        float dist = Vector3.DistanceBetween(Agent.AgentPosition, waypoint.WorldPosition);
+        float dist = Vector3.DistanceBetween(Agent.AgentPosition, nextPos);
 
         if (dist < 30f)
         {
@@ -80,12 +83,14 @@ public partial class CitizenAI : Component, ISelectable
             return;
         }
 
-        Agent.MoveTo(waypoint.WorldPosition);
+        Agent.MoveTo(nextPos);
     }
 
     private void UpdateNextDestination()
     {
         waypoint = wpManager.GetWaypoint();
+        nextPos = waypoint.GetRandomizedPos();
+
         Agent.UpdateRotation = true;
         Agent.UpdatePosition = true;
         isWaiting = false;
