@@ -34,6 +34,10 @@
           "go": "dbc45065-840f-4ba7-b41a-4ddb77b5166f",
           "component_type": "SkinnedModelRenderer"
         },
+        "SelectionGlow": {
+          "_type": "gameobject",
+          "go": "eb32b306-4ac2-4019-a97a-439683b20b28"
+        },
         "Shirt": {
           "_type": "component",
           "component_id": "e99cdffc-120d-44f8-9d65-1e9a3e999e03",
@@ -303,6 +307,29 @@
                 "UseAnimGraph": true
               }
             ]
+          }
+        ]
+      },
+      {
+        "__guid": "eb32b306-4ac2-4019-a97a-439683b20b28",
+        "Flags": 0,
+        "Name": "Selection Glow",
+        "Position": "0,0,0.1",
+        "Components": [
+          {
+            "__type": "Sandbox.ModelRenderer",
+            "__guid": "85510705-7abc-4578-9f4e-f55980a0432a",
+            "BodyGroups": 18446744073709551615,
+            "MaterialOverride": "materials/selectionglow.vmat",
+            "Model": "models/dev/plane.vmdl",
+            "RenderOptions": {
+              "GameLayer": true,
+              "OverlayLayer": false,
+              "BloomLayer": false,
+              "AfterUILayer": false
+            },
+            "RenderType": "On",
+            "Tint": "1,1,1,1"
           }
         ]
       }

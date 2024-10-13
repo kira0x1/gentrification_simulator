@@ -86,4 +86,31 @@ CityUI {
     padding: 0;
     gap: 10px;
   }
+
+  .arrow {
+    position: absolute;
+    width: 100px;
+    height: 90px;
+    padding: 8px;
+    border-radius: 6px;
+    background-color: #333;
+
+
+    SlotBtn {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .left {
+    position: absolute;
+    left: 650px;
+    bottom: 30px;
+  }
+
+  .right {
+    position: absolute;
+    bottom: 30px;
+    right: 650px;
+  }
 }

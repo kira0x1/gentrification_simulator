@@ -11,10 +11,15 @@ public class PlayerCamera : Component
     public ISelectable hovering;
     public ISelectable SelectedUnit { get; set; }
 
+    private Angles DefaultAngle { get; set; }
+
     protected override void OnAwake()
     {
         Camera = Scene.GetAllComponents<CameraComponent>().FirstOrDefault();
         player = Components.Get<Player>();
+
+        if (!Camera.IsValid()) return;
+        DefaultAngle = Camera.LocalRotation.Angles();
     }
 
     protected override void OnUpdate()
@@ -22,6 +27,15 @@ public class PlayerCamera : Component
         UpdateRay();
     }
 
+    public void TurnView(float xAngle)
+    {
+        Camera.LocalRotation = Camera.LocalRotation.Angles() + new Angles(0, xAngle, 0);
+    }
+
+    public void ResetView()
+    {
+        Camera.LocalRotation = Rotation.From(DefaultAngle);
+    }
 
     private void UpdateRay()
     {

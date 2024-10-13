@@ -1,6 +1,7 @@
 ﻿namespace Kira;
 
 using System;
+using Sandbox.UI;
 
 public class CityManager : Component
 {
@@ -20,6 +21,8 @@ public class CityManager : Component
     [Property, Group("Citizen Clothes")] public List<Model> Hair = new List<Model>();
     [Property, Group("Citizen Clothes")] public List<Model> Beard = new List<Model>();
 
+    [Property] private GameObject SelectedUI { get; set; }
+
     protected override void OnAwake()
     {
         CityCitizens = Scene.GetAllComponents<CitizenAI>().ToList();
@@ -27,6 +30,9 @@ public class CityManager : Component
 
         foreach (CitizenAI citizen in CityCitizens)
         {
+            citizen.OnCitizenSelected += OnCitizenSelected;
+            citizen.OnCitizenDeselected += OnCitizienDeselect;
+
             citizen.Agent.MaxSpeed = CitizenMaxSpeed;
             citizen.Agent.Acceleration = CitizenAcceleration;
             citizen.SetCitizenState(GenerateCitizenData());
@@ -46,8 +52,25 @@ public class CityManager : Component
         // Break from prefab useful when wanting to inspect citizens in scene
         // clone.BreakFromPrefab();
 
+        ai.OnCitizenSelected += OnCitizenSelected;
+        ai.OnCitizenDeselected += OnCitizienDeselect;
+
         CityCitizens.Add(ai);
         City.Population++;
+    }
+
+    private void OnCitizenSelected(CitizenAI citizen)
+    {
+        SelectedUI.SetParent(citizen.GameObject);
+        // SelectedUI.LocalPosition = Vector3.Zero.WithZ(SelectedUI.WorldPosition.z);
+        SelectedUI.WorldPosition = new Vector3(citizen.WorldPosition.x - 60, citizen.WorldPosition.y + 40, 0);
+        SelectedUI.WorldPosition = SelectedUI.WorldPosition.WithZ(65);
+        SelectedUI.Enabled = true;
+    }
+
+    private void OnCitizienDeselect()
+    {
+        SelectedUI.Enabled = false;
     }
 
     public CitizenState GenerateCitizenData()

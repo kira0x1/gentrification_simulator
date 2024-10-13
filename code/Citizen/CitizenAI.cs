@@ -20,6 +20,12 @@ public partial class CitizenAI : Component, ISelectable
 
     private TimeSince timeSinceStop;
     private bool isWaiting;
+    private bool canMove = true;
+
+    #pragma warning disable CS0067 // Event is never used
+    public event Action<CitizenAI> OnCitizenSelected;
+    public event Action OnCitizenDeselected;
+    #pragma warning restore CS0067 // Event is never used
 
     [Property, Group("Clothes")] public SkinnedModelRenderer Body { get; set; }
     [Property, Group("Clothes")] public SkinnedModelRenderer Hair { get; set; }
@@ -62,7 +68,7 @@ public partial class CitizenAI : Component, ISelectable
     {
         UpdateAnimator();
 
-        if (isWaiting && timeSinceStop < waitTime)
+        if (isWaiting && timeSinceStop < waitTime || !canMove)
         {
             return;
         }
@@ -103,14 +109,5 @@ public partial class CitizenAI : Component, ISelectable
     {
         Anim.WithVelocity(Agent.Velocity);
         Anim.WithWishVelocity(Agent.WishVelocity);
-    }
-
-    public Guid id { get; set; }
-    public bool IsSelected { get; set; }
-    public bool IsHovering { get; set; }
-    public SelectableTypes SelectableType { get; set; } = SelectableTypes.Unit;
-
-    public void Deselect()
-    {
     }
 }

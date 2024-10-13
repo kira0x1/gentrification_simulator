@@ -377,9 +377,42 @@
             "_type": "gameobject",
             "prefab": "prefabs/citizen prefab.prefab"
           },
+          "SelectedUI": {
+            "_type": "gameobject",
+            "go": "6d907c24-ac8f-4a05-a034-4e3581be3d5d"
+          },
           "WeightedColors": [
             {}
           ]
+        }
+      ]
+    },
+    {
+      "__guid": "6d907c24-ac8f-4a05-a034-4e3581be3d5d",
+      "Flags": 0,
+      "Name": "Selection UI",
+      "Position": "-31.99998,247.7122,64",
+      "Rotation": "0,0,0.7071068,0.7071068",
+      "Components": [
+        {
+          "__type": "Sandbox.WorldPanel",
+          "__guid": "d64b032b-f764-44f0-9d40-44d5d439e0f1",
+          "HorizontalAlign": "Center",
+          "InteractionRange": 1000,
+          "LookAtCamera": true,
+          "PanelSize": "1024,1024",
+          "RenderOptions": {
+            "GameLayer": true,
+            "OverlayLayer": false,
+            "BloomLayer": false,
+            "AfterUILayer": false
+          },
+          "RenderScale": 1,
+          "VerticalAlign": "Center"
+        },
+        {
+          "__type": "Sandbox.SelectedWorldUI",
+          "__guid": "f2a14df9-c544-48ff-b47c-461bb19ac290"
         }
       ]
     }

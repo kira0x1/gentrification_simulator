@@ -13,8 +13,8 @@
     <div class="action-menu">
         <div class="container grid">
             <SlotBtn Icon="group_add" KeyLabel="1" OnClickAction=@(() => CityManager.SpawnCitizen())/>
-            <SlotBtn Icon="science" KeyLabel="2"/>
-            <SlotBtn keyLabel="8"/>
+            <SlotBtn Icon="science"/>
+            <SlotBtn/>
             <SlotBtn/>
             <SlotBtn/>
             <SlotBtn/>
@@ -25,16 +25,26 @@
     </div>
     <navbar>
         <SlotBtn Icon="group_add" KeyLabel="1" OnClickAction=@(() => CityManager.SpawnCitizen())/>
-        <SlotBtn/>
+        <SlotBtn Icon="camera" KeyLabel="2" OnClickAction=@(() => Camera.ResetView())/>
         <SlotBtn/>
         <SlotBtn/>
     </navbar>
     <div class="sidebar"></div>
+
+    @* Arrows - Camera View *@
+    <div class="arrow left">
+        <SlotBtn Icon="chevron_left" OnClickAction=@(() => Camera.TurnView(30))/>
+    </div>
+
+    <div class="arrow right">
+        <SlotBtn Icon="chevron_right" OnClickAction=@(() => Camera.TurnView(-30))/>
+    </div>
 </root>
 
 @code
 {
     private Player Player { get; set; }
+    private PlayerCamera Camera { get; set; }
     private City City { get; set; }
     private CityManager CityManager { get; set; }
     public readonly CityAction[] cityActions = new CityAction[1];
@@ -45,6 +55,9 @@
 
         CityManager = Scene.GetAllComponents<CityManager>().FirstOrDefault();
         if (!CityManager.IsValid()) return;
+
+        Camera = Scene.GetAllComponents<PlayerCamera>().FirstOrDefault();
+
         City = CityManager.City;
         cityActions[0] = new CityAction(() => CityManager.SpawnCitizen(), 0.5f);
     }
@@ -59,6 +72,11 @@
         if (Input.Down("Slot1"))
         {
             cityActions[0].Use();
+        }
+
+        if (Input.Down("Slot2"))
+        {
+            Camera.ResetView();
         }
     }
 
