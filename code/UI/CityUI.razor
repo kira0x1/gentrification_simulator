@@ -92,7 +92,7 @@
         Camera = Scene.GetAllComponents<PlayerCamera>().FirstOrDefault();
 
         City = CityManager.City;
-        cityActions[0] = new GameAction(() => CityManager.SpawnCitizen(), 0.25f);
+        cityActions[0] = new GameAction(() => CityManager.SpawnCitizen(CitizenType.Teenager), 0.25f);
         cityActions[1] = new GameAction(() => Camera.TurnView(-30), 0.1f);
         cityActions[2] = new GameAction(() => Camera.TurnView(30), 0.1f);
         cityActions[3] = new GameAction(() => Camera.ResetView(), 0.1f);

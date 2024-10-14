@@ -12,13 +12,16 @@ public class CityManager : Component
     [Property, Range(0, 100)] public float CitizenMaxSpeed { get; set; } = 60;
 
     [Property, Group("Citizen")] private GameObject CitizenPrefab { get; set; }
-    [Property, Group("Citizen")] public readonly List<Color> HairColors = new List<Color>();
+
     [Property, Group("Citizen")] public readonly List<Model> Pants = new List<Model>();
     [Property, Group("Citizen")] public readonly List<Model> Shirt = new List<Model>();
     [Property, Group("Citizen")] public readonly List<Model> Hair = new List<Model>();
     [Property, Group("Citizen")] public readonly List<Model> Beard = new List<Model>();
+    [Property, Group("Citizen/Colors")] public readonly List<Color> HairColors = new List<Color>();
 
     [Property] private SelectedWorldUI SelectedUI { get; set; }
+    [Property] public readonly Dictionary<CitizenType, CitizenStyle> CitizenStyles = new Dictionary<CitizenType, CitizenStyle>();
+
 
     protected override void OnAwake()
     {
@@ -55,6 +58,32 @@ public class CityManager : Component
 
         ai.OnCitizenSelected += OnCitizenSelected;
         ai.OnCitizenDeselected += OnCitizienDeselect;
+        citizenData.container.Apply(ai.Anim.Target);
+
+
+        CityCitizens.Add(ai);
+        City.Population++;
+    }
+
+    public void SpawnCitizen(CitizenType citizenType)
+    {
+        CitizenState citizenData = GenerateCitizenData(citizenType);
+        Log.Info(citizenData.firstName);
+
+        var cam = PlayerCam.Camera;
+        var pos = cam.WorldPosition + cam.LocalTransform.Forward * 350f;
+        var clone = CitizenPrefab.Clone(pos.WithZ(0));
+
+        CitizenAI ai = clone.Components.Get<CitizenAI>();
+        ai.SetCitizenState(citizenData);
+
+        // Break from prefab useful when wanting to inspect citizens in scene
+        // clone.BreakFromPrefab();
+
+        ai.OnCitizenSelected += OnCitizenSelected;
+        ai.OnCitizenDeselected += OnCitizienDeselect;
+
+        citizenData.container.Apply(ai.Anim.Target);
 
         CityCitizens.Add(ai);
         City.Population++;
@@ -73,6 +102,12 @@ public class CityManager : Component
     private void OnCitizienDeselect()
     {
         SelectedUI.GameObject.Enabled = false;
+    }
+
+    public CitizenState GenerateCitizenData(CitizenType style)
+    {
+        CitizenStyle cs = CitizenStyles[style];
+        return cs.GenerateCitizenData();
     }
 
     public CitizenState GenerateCitizenData()

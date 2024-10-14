@@ -104,7 +104,7 @@
       "__guid": "c74ae1aa-fe9e-434c-9685-6a2794df9495",
       "Flags": 0,
       "Name": "Citizen 2",
-      "Position": "23.25892,220.3069,0",
+      "Position": "23.25892,220.3069,13.80108",
       "Rotation": "0,0,0.0768339,-0.9970441",
       "Tags": "selectable",
       "Enabled": true,
@@ -370,6 +370,9 @@
             "models/citizen_clothes/hair/medium_beard/models/medium_beard.vmdl",
             "models/citizen_clothes/hair/patchy_beard/models/patchy_beard.vmdl"
           ],
+          "CitizenStyles": {
+            "Teenager": "styles/teenager_style.cstyle"
+          },
           "Hair": [
             "models/citizen_clothes/hair/hair_shortscruffy/models/hair_shortscruffy.vmdl",
             "models/citizen_clothes/hair/hair_looseblonde/hair_looseblonde.vmdl"

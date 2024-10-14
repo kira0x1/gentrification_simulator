@@ -27,7 +27,7 @@ public partial class CitizenAI : Component, ISelectable
     private Vector3 nextPos;
 
     private WaypointManager wpManager { get; set; }
-    private CitizenAnimationHelper Anim { get; set; }
+    public CitizenAnimationHelper Anim { get; set; }
 
     private const float minWaitTime = 2f;
     private const float maxWaitTime = 4.5f;
@@ -42,12 +42,6 @@ public partial class CitizenAI : Component, ISelectable
     public event Action OnCitizenDeselected;
     #pragma warning restore CS0067 // Event is never used
 
-    [Property, Group("Clothes")] public SkinnedModelRenderer Body { get; set; }
-    [Property, Group("Clothes")] public SkinnedModelRenderer Hair { get; set; }
-    [Property, Group("Clothes")] public SkinnedModelRenderer Beard { get; set; }
-    [Property, Group("Clothes")] public SkinnedModelRenderer Pants { get; set; }
-    [Property, Group("Clothes")] public SkinnedModelRenderer Shirt { get; set; }
-
     protected override void OnAwake()
     {
         base.OnAwake();
@@ -59,19 +53,6 @@ public partial class CitizenAI : Component, ISelectable
     public void SetCitizenState(CitizenState state)
     {
         CitizenState = state;
-
-        Hair.Model = state.hairModel;
-        Hair.Tint = state.hairColor;
-
-        Beard.Model = state.beardModel;
-
-        // Make it a little darker then hair
-        Beard.Tint = Color.Lerp(state.hairColor, Color.Black, 0.5f);
-
-        Shirt.Model = state.shirtModel;
-        Pants.Model = state.pantsModel;
-
-        Beard.Enabled = CitizenState.hasBeard;
     }
 
     protected override void OnStart()
