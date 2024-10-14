@@ -2,7 +2,7 @@
 
 public class PlayerCamera : Component
 {
-    private CameraComponent Camera { get; set; }
+    public CameraComponent Camera { get; set; }
     private Player player;
 
     public bool IsHovering { get; set; }

@@ -1,12 +1,12 @@
 ﻿namespace Kira;
 
 using System;
-using Sandbox.UI;
 
 public class CityManager : Component
 {
     public City City { get; set; } = new City();
     public List<CitizenAI> CityCitizens { get; set; } = new List<CitizenAI>();
+    private PlayerCamera PlayerCam { get; set; }
 
     [Property, Range(0, 100)] public float CitizenAcceleration { get; set; } = 80;
     [Property, Range(0, 100)] public float CitizenMaxSpeed { get; set; } = 60;
@@ -26,6 +26,8 @@ public class CityManager : Component
     protected override void OnAwake()
     {
         CityCitizens = Scene.GetAllComponents<CitizenAI>().ToList();
+        PlayerCam = Scene.GetAllComponents<PlayerCamera>().FirstOrDefault();
+
         RandomNames.Init();
 
         foreach (CitizenAI citizen in CityCitizens)
@@ -44,7 +46,11 @@ public class CityManager : Component
     public void SpawnCitizen()
     {
         var citizenData = GenerateCitizenData();
-        var clone = CitizenPrefab.Clone(Vector3.Zero);
+        var cam = PlayerCam.Camera;
+        var pos = cam.WorldPosition.WithZ(15) + cam.LocalTransform.Forward * 250f;
+
+
+        var clone = CitizenPrefab.Clone(pos);
 
         CitizenAI ai = clone.Components.Get<CitizenAI>();
         ai.SetCitizenState(citizenData);
