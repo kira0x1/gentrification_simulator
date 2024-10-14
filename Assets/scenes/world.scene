@@ -105,7 +105,7 @@
       "Flags": 0,
       "Name": "Citizen 2",
       "Position": "23.25892,220.3069,0",
-      "Rotation": "0,0,0.8250486,0.565062",
+      "Rotation": "0,0,0.0768339,-0.9970441",
       "Tags": "selectable",
       "Enabled": true,
       "__Prefab": "prefabs/citizen prefab.prefab",
@@ -352,6 +352,7 @@
       "__guid": "27d947bb-63a0-4b10-b563-bce9d137b1ad",
       "Flags": 0,
       "Name": "Player",
+      "Position": "0.7429869,0,0",
       "Enabled": true,
       "Components": [
         {
@@ -398,8 +399,10 @@
             "prefab": "prefabs/citizen prefab.prefab"
           },
           "SelectedUI": {
-            "_type": "gameobject",
-            "go": "6d907c24-ac8f-4a05-a034-4e3581be3d5d"
+            "_type": "component",
+            "component_id": "f2a14df9-c544-48ff-b47c-461bb19ac290",
+            "go": "6d907c24-ac8f-4a05-a034-4e3581be3d5d",
+            "component_type": "SelectedWorldUI"
           }
         }
       ]
@@ -422,7 +425,7 @@
             "GameLayer": true,
             "OverlayLayer": false,
             "BloomLayer": false,
-            "AfterUILayer": false
+            "AfterUILayer": true
           },
           "RenderScale": 1,
           "VerticalAlign": "Center"

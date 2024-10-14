@@ -8,6 +8,7 @@
 
     @* City Stats *@
     <div class="stats">
+        <StatText Label="Money" Value=@($"{Player.Money:N0}")/>
         <StatText Label="Gdp" Value=@($"{City.CityState.CityIncome}")/>
         <StatText Label="Population" Value=@($"{City.Population}")/>
         <StatText Label="Homeless" Value=@($"{City.Homelessness}")/>
@@ -87,6 +88,7 @@
         CityManager = Scene.GetAllComponents<CityManager>().FirstOrDefault();
         if (!CityManager.IsValid()) return;
 
+        Player = Scene.GetAllComponents<Player>().FirstOrDefault();
         Camera = Scene.GetAllComponents<PlayerCamera>().FirstOrDefault();
 
         City = CityManager.City;
@@ -127,5 +129,5 @@
     /// <summary>
     /// the hash determines if the system should be rebuilt. If it changes, it will be rebuilt
     /// </summary>
-    protected override int BuildHash() => HashCode.Combine(City.Population);
+    protected override int BuildHash() => HashCode.Combine(City.Population, Player.Money);
 }

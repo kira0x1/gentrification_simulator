@@ -1,11 +1,14 @@
 @using System
+@using Kira
 @inherits PanelComponent
 @namespace Sandbox
 
 <root>
+    <div class="title">@CitizenSelected.fullName</div>
 </root>
 
 @code
 {
+    public CitizenState CitizenSelected { get; set; }
     protected override int BuildHash() => HashCode.Combine("");
 }

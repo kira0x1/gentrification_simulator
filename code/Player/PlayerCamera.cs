@@ -3,7 +3,6 @@
 public class PlayerCamera : Component
 {
     public CameraComponent Camera { get; set; }
-    private Player player;
 
     public bool IsHovering { get; set; }
     public bool HasSelection { get; set; }
@@ -23,7 +22,6 @@ public class PlayerCamera : Component
     protected override void OnAwake()
     {
         Camera = Scene.GetAllComponents<CameraComponent>().FirstOrDefault();
-        player = Components.Get<Player>();
 
         if (!Camera.IsValid()) return;
 
@@ -42,7 +40,6 @@ public class PlayerCamera : Component
         Camera.LocalRotation = Camera.LocalRotation.Angles() + new Angles(0, xAngle, 0);
     }
 
-    //TODO Reset Camera Zoom
     public void ResetZoom()
     {
         Camera.FieldOfView = DefaultFov;

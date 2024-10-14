@@ -18,7 +18,7 @@ public class CityManager : Component
     [Property, Group("Citizen")] public readonly List<Model> Hair = new List<Model>();
     [Property, Group("Citizen")] public readonly List<Model> Beard = new List<Model>();
 
-    [Property] private GameObject SelectedUI { get; set; }
+    [Property] private SelectedWorldUI SelectedUI { get; set; }
 
     protected override void OnAwake()
     {
@@ -62,16 +62,17 @@ public class CityManager : Component
 
     private void OnCitizenSelected(CitizenAI citizen)
     {
-        SelectedUI.SetParent(citizen.GameObject);
+        SelectedUI.CitizenSelected = citizen.CitizenState;
+        SelectedUI.GameObject.SetParent(citizen.GameObject);
         // SelectedUI.LocalPosition = Vector3.Zero.WithZ(SelectedUI.WorldPosition.z);
         SelectedUI.WorldPosition = new Vector3(citizen.WorldPosition.x - 60, citizen.WorldPosition.y + 40, 0);
         SelectedUI.WorldPosition = SelectedUI.WorldPosition.WithZ(65);
-        SelectedUI.Enabled = true;
+        SelectedUI.GameObject.Enabled = true;
     }
 
     private void OnCitizienDeselect()
     {
-        SelectedUI.Enabled = false;
+        SelectedUI.GameObject.Enabled = false;
     }
 
     public CitizenState GenerateCitizenData()

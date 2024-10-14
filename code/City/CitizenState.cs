@@ -8,6 +8,8 @@ public struct CitizenState
     public string lastName;
     public string fullName => $"{firstName} {lastName}";
 
+    //TODO: Job class, Company, position, etc
+
     public bool isHomeless;
     public int age;
 
