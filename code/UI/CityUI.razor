@@ -55,6 +55,20 @@
     <div class="arrow right">
         <SlotBtn Icon="chevron_right" OnClickAction=@(() => Camera.TurnView(-30))/>
     </div>
+
+    <div class="zoom-btns">
+        <div class="container grid col">
+
+            @{
+                bool canZoomIn = Camera.CurFov <= PlayerCamera.MinFov;
+                bool canZoomOut = Camera.CurFov >= PlayerCamera.MaxFov;
+            }
+
+            <SlotBtn IsDisabled=@canZoomIn Icon="zoom_in" OnClickAction=@(() => Camera.ZoomIn())/>
+            <SlotBtn IsDisabled=@canZoomOut Icon="zoom_out" OnClickAction=@(() => Camera.ZoomOut())/>
+            <SlotBtn Icon="control_camera" OnClickAction=@(() => Camera.ResetZoom())/>
+        </div>
+    </div>
 </root>
 
 @code
@@ -65,7 +79,6 @@
     private CityManager CityManager { get; set; }
     public readonly GameAction[] cityActions = new GameAction[4];
     private bool ShopOpen { get; set; }
-
 
     protected override void OnAwake()
     {

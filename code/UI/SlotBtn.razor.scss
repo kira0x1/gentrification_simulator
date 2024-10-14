@@ -49,6 +49,15 @@ SlotBtn {
     }
   }
 
+  .disabled {
+    background-color: #444;
+    pointer-events: none;
+
+    i {
+      color: #999;
+    }
+  }
+
 
   button {
     padding: 0;

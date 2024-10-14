@@ -9,6 +9,8 @@
         {
             btnClass += " blue";
         }
+
+        if (IsDisabled) btnClass += " disabled";
     }
 
     <div class=@btnClass>
@@ -39,6 +41,7 @@
     public string KeyLabel { get; set; }
     public string Icon { get; set; }
     public Action OnClickAction { get; set; }
+    public bool IsDisabled { get; set; }
 
     private void OnClicked()
     {
@@ -50,5 +53,5 @@
         OnClickAction?.Invoke();
     }
 
-    protected override int BuildHash() => HashCode.Combine(Icon, KeyLabel, IsOn);
+    protected override int BuildHash() => HashCode.Combine(Icon, KeyLabel, IsOn, IsDisabled);
 }

@@ -2,8 +2,8 @@ $largeicon: 77px;
 $mediumicon: 56px;
 $smallicon: 40px;
 
-$bottombar: 20px;
-$bottomright: 20px;
+$btm-pos: 20px;
+$bottomright: 20;
 $menubar-width: 320px;
 $menubar-height: 86px;
 
@@ -27,7 +27,7 @@ CityUI {
     height: 110px;
 
     position: absolute;
-    bottom: $bottombar;
+    bottom: $btm-pos;
     align-items: center;
     justify-content: center;
     padding: 0 10px;
@@ -84,6 +84,7 @@ CityUI {
     align-content: center;
     gap: 10px;
 
+
     .slot-btn {
       height: 80px;
       width: 90px;
@@ -92,6 +93,10 @@ CityUI {
         font-size: $mediumicon;
       }
     }
+  }
+
+  .col {
+    flex-direction: column;
   }
 
   .title {
@@ -103,7 +108,7 @@ CityUI {
   .menu-bar {
     position: absolute;
     right: $bottomright;
-    bottom: $bottombar;
+    bottom: $btm-pos;
     height: $menubar-height;
     width: $menubar-width;
 
@@ -161,4 +166,27 @@ CityUI {
     gap: 10px;
   }
 
+  .zoom-btns {
+    width: 115px;
+    height: 220px;
+    position: absolute;
+    padding: 0 3px;
+    left: 18vw;
+    bottom: $btm-pos;
+
+    .container {
+      gap: 4px;
+
+      SlotBtn {
+        height: 65px;
+
+        i {
+          font-size: 40px;
+        }
+      }
+    }
+
+    color: white;
+    font-size: 20px;
+  }
 }

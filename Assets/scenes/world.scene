@@ -14,7 +14,7 @@
           "__guid": "9f98817f-28e6-4723-a620-34b26c919b90",
           "BackgroundColor": "0.33333,0.46275,0.52157,1",
           "ClearFlags": "All",
-          "FieldOfView": 59.69,
+          "FieldOfView": 60,
           "IsMainCamera": true,
           "Orthographic": false,
           "OrthographicHeight": 1204,

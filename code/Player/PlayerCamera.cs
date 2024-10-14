@@ -12,6 +12,13 @@ public class PlayerCamera : Component
     public ISelectable SelectedUnit { get; set; }
 
     private Angles DefaultAngle { get; set; }
+    private Vector3 DefaultPosition { get; set; }
+    private float DefaultFov { get; set; }
+
+    public float CurFov => Camera.FieldOfView;
+
+    public const float MaxFov = 100;
+    public const float MinFov = 20;
 
     protected override void OnAwake()
     {
@@ -19,7 +26,10 @@ public class PlayerCamera : Component
         player = Components.Get<Player>();
 
         if (!Camera.IsValid()) return;
+
         DefaultAngle = Camera.LocalRotation.Angles();
+        DefaultPosition = Camera.WorldPosition;
+        DefaultFov = Camera.FieldOfView;
     }
 
     protected override void OnUpdate()
@@ -32,9 +42,31 @@ public class PlayerCamera : Component
         Camera.LocalRotation = Camera.LocalRotation.Angles() + new Angles(0, xAngle, 0);
     }
 
+    //TODO Reset Camera Zoom
+    public void ResetZoom()
+    {
+        Camera.FieldOfView = DefaultFov;
+        Camera.WorldPosition = DefaultPosition;
+    }
+
     public void ResetView()
     {
         Camera.LocalRotation = Rotation.From(DefaultAngle);
+    }
+
+    public void ZoomIn()
+    {
+        AdjustZoom(-10f);
+    }
+
+    public void ZoomOut()
+    {
+        AdjustZoom(10f);
+    }
+
+    public void AdjustZoom(float zoomAmount)
+    {
+        Camera.FieldOfView = float.Clamp(Camera.FieldOfView + zoomAmount, MinFov, MaxFov);
     }
 
     private void UpdateRay()
