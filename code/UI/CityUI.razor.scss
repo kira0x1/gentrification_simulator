@@ -1,3 +1,15 @@
+$largeicon: 77px;
+$mediumicon: 56px;
+$smallicon: 40px;
+
+$bottombar: 20px;
+$bottomright: 20px;
+$menubar-width: 320px;
+$menubar-height: 86px;
+
+$primarycolor: rgba(#323232, 1);
+$secondarycolor: rgba(#444, 1);
+
 CityUI {
   position: absolute;
   top: 0;
@@ -8,18 +20,24 @@ CityUI {
   align-items: center;
   font-weight: bold;
 
-  navbar {
+  .hotbar {
     background-color: rgba(#323232, 1);
     border-radius: 5px;
     width: 520px;
     height: 110px;
 
     position: absolute;
-    bottom: 20px;
+    bottom: $bottombar;
     align-items: center;
     justify-content: center;
     padding: 0 10px;
     gap: 10px;
+
+    .slot-btn {
+      i {
+        font-size: $mediumicon;
+      }
+    }
   }
 
   .stats {
@@ -37,23 +55,24 @@ CityUI {
   }
 
   .action-menu {
-    width: 320px;
+    width: $menubar-width;
     height: 285px;
-
     position: absolute;
-    right: 20px;
-    bottom: 20px;
 
-    background-color: rgba(#323232, 1);
+    right: $bottomright;
+    bottom: 120px;
+
     border-radius: 7px;
     justify-content: center;
     align-content: center;
   }
 
   .container {
+
     width: 100%;
     height: 100%;
-    background-color: rgba(#353535, 1);
+    //background-color: rgba(#353535, 1);
+    background-color: $primarycolor;
     border-radius: 6px;
     justify-content: center;
   }
@@ -63,11 +82,15 @@ CityUI {
     flex-wrap: wrap;
     justify-content: center;
     align-content: center;
-    gap: 8px;
+    gap: 10px;
 
     .slot-btn {
       height: 80px;
       width: 90px;
+
+      i {
+        font-size: $mediumicon;
+      }
     }
   }
 
@@ -77,14 +100,25 @@ CityUI {
     color: #fff;
   }
 
-  StatText {
-    color: white;
-    font-family: Poppins;
-    font-size: 22px;
-    display: flex;
-    margin: 0;
-    padding: 0;
+  .menu-bar {
+    position: absolute;
+    right: $bottomright;
+    bottom: $bottombar;
+    height: $menubar-height;
+    width: $menubar-width;
+
     gap: 10px;
+
+    justify-content: center;
+    align-items: center;
+
+    background-color: $primarycolor;
+    border-radius: 6px;
+
+    SlotBtn {
+      width: 66px;
+      height: 64px;
+    }
   }
 
   .arrow {
@@ -93,10 +127,13 @@ CityUI {
     height: 90px;
     padding: 8px;
     border-radius: 6px;
-    background-color: #333;
-
+    background-color: $primarycolor;
 
     SlotBtn {
+      i {
+        font-size: $largeicon;
+      }
+
       width: 100%;
       height: 100%;
     }
@@ -113,4 +150,15 @@ CityUI {
     bottom: 30px;
     right: 25vw;
   }
+
+  StatText {
+    color: white;
+    font-family: Poppins;
+    font-size: 22px;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    gap: 10px;
+  }
+
 }

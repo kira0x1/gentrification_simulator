@@ -11,15 +11,12 @@ public class CityManager : Component
     [Property, Range(0, 100)] public float CitizenAcceleration { get; set; } = 80;
     [Property, Range(0, 100)] public float CitizenMaxSpeed { get; set; } = 60;
 
-    [Property]
-    private GameObject CitizenPrefab { get; set; }
-
-    [Property, Group("Citizen Clothes")] public List<Color> HairColors = new List<Color>();
-    [Property, Group("Citizen Clothes")] public List<(Color, int)> WeightedColors { get; set; }
-    [Property, Group("Citizen Clothes")] public List<Model> Pants = new List<Model>();
-    [Property, Group("Citizen Clothes")] public List<Model> Shirt = new List<Model>();
-    [Property, Group("Citizen Clothes")] public List<Model> Hair = new List<Model>();
-    [Property, Group("Citizen Clothes")] public List<Model> Beard = new List<Model>();
+    [Property, Group("Citizen")] private GameObject CitizenPrefab { get; set; }
+    [Property, Group("Citizen")] public readonly List<Color> HairColors = new List<Color>();
+    [Property, Group("Citizen")] public readonly List<Model> Pants = new List<Model>();
+    [Property, Group("Citizen")] public readonly List<Model> Shirt = new List<Model>();
+    [Property, Group("Citizen")] public readonly List<Model> Hair = new List<Model>();
+    [Property, Group("Citizen")] public readonly List<Model> Beard = new List<Model>();
 
     [Property] private GameObject SelectedUI { get; set; }
 

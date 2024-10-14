@@ -2,38 +2,6 @@
   "__guid": "a7f73147-c931-4e16-9c8b-76622c89a281",
   "GameObjects": [
     {
-      "__guid": "f81cb644-1ad9-4769-b737-6560b4ece025",
-      "Flags": 0,
-      "Name": "Plane",
-      "Position": "448,640,0",
-      "Scale": "27.17439,19.42429,16",
-      "Components": [
-        {
-          "__type": "Sandbox.ModelRenderer",
-          "__guid": "727cd007-c460-46c1-a78e-c620dbe0196b",
-          "BodyGroups": 18446744073709551615,
-          "MaterialOverride": "materials/grid.vmat",
-          "Model": "models/dev/plane.vmdl",
-          "RenderOptions": {
-            "GameLayer": true,
-            "OverlayLayer": false,
-            "BloomLayer": false,
-            "AfterUILayer": false
-          },
-          "RenderType": "On",
-          "Tint": "1,1,1,1"
-        },
-        {
-          "__type": "Sandbox.PlaneCollider",
-          "__guid": "553087d7-381e-4591-b1a7-679e3b679b35",
-          "Center": "0,0,0",
-          "IsTrigger": false,
-          "Scale": "100,100",
-          "Static": true
-        }
-      ]
-    },
-    {
       "__guid": "38798cc2-3fc6-4d2c-9a41-8f297c29d96a",
       "Flags": 0,
       "Name": "Camera",
@@ -137,7 +105,7 @@
       "Flags": 0,
       "Name": "Citizen 2",
       "Position": "23.25892,220.3069,0",
-      "Rotation": "0,0,0.8917454,0.4525373",
+      "Rotation": "0,0,0.8250486,0.565062",
       "Tags": "selectable",
       "Enabled": true,
       "__Prefab": "prefabs/citizen prefab.prefab",
@@ -325,6 +293,58 @@
               "__guid": "ead98d1d-68a1-4584-8d7a-23ef0427a1fe"
             }
           ]
+        },
+        {
+          "__guid": "2262f638-d998-4de3-ae6f-d2a6253d1a6b",
+          "Flags": 0,
+          "Name": "wp 8",
+          "Position": "339.1474,130.8909,7.906822",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Kira.Waypoint",
+              "__guid": "ca6e0ce7-16f5-4582-b0d4-6fbf17649151"
+            }
+          ]
+        },
+        {
+          "__guid": "d377d835-67a6-4ff5-a6ac-d9117967d6c7",
+          "Flags": 0,
+          "Name": "wp 8",
+          "Position": "211.1474,311.4803,7.906822",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Kira.Waypoint",
+              "__guid": "3f962060-e623-4f76-94b8-3fa6a4da1922"
+            }
+          ]
+        },
+        {
+          "__guid": "1991b109-c59e-4d5d-ab57-c8f1070bde71",
+          "Flags": 0,
+          "Name": "wp 8",
+          "Position": "-44.8526,311.4803,7.906822",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Kira.Waypoint",
+              "__guid": "4692cf28-ae13-4a36-8071-fe8fe990200c"
+            }
+          ]
+        },
+        {
+          "__guid": "06a39a2d-dbc7-4db3-b4b6-e372712f90d7",
+          "Flags": 0,
+          "Name": "wp 8",
+          "Position": "-286.0751,162.8909,7.906822",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Kira.Waypoint",
+              "__guid": "392550e6-eb01-441b-adf3-d9eb785c59ec"
+            }
+          ]
         }
       ]
     },
@@ -380,10 +400,7 @@
           "SelectedUI": {
             "_type": "gameobject",
             "go": "6d907c24-ac8f-4a05-a034-4e3581be3d5d"
-          },
-          "WeightedColors": [
-            {}
-          ]
+          }
         }
       ]
     },

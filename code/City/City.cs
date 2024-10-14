@@ -26,13 +26,12 @@ public static class CityActions
     public static void Init()
     {
         if (HasLoaded) return;
-        actions = new List<CityAction>();
-        actions.Add(new CityAction("Test Action", "science", OnTestAction, 0.1f));
-
+        actions = new List<GameAction>();
+        actions.Add(new GameAction("Test Action", "science", OnTestAction, 0.1f));
         HasLoaded = true;
     }
 
-    public static List<CityAction> actions = new List<CityAction>();
+    public static List<GameAction> actions = new List<GameAction>();
 
     public static void OnTestAction()
     {

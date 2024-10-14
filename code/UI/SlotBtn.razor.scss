@@ -2,25 +2,69 @@ SlotBtn {
   pointer-events: all;
   width: 30%;
   height: 80%;
-  background: #555;
-  border-radius: 3px;
-  padding: 6px;
 
-  &:hover {
-    background-color: #666;
+
+  .inner-btn {
+    width: 100%;
+    height: 100%;
+    background: #555;
+    padding: 6px;
+    pointer-events: all;
+    border-radius: 3px;
+
+    &:hover {
+      background-color: #666;
+    }
+
+    &:active {
+      background-color: #777;
+    }
   }
 
-  &:active {
-    background-color: #777;
+  .blue {
+    background-color: #529acc;
+
+
+    &:hover {
+      background-color: #84adcc;
+    }
+
+    &:active {
+      background-color: #a5baca;
+    }
   }
+
+  .off {
+  }
+
+  .on {
+    background-color: #529acc;
+
+    &:hover {
+      background-color: #84adcc;
+    }
+
+    &:active {
+      background-color: #a5baca;
+    }
+  }
+
 
   button {
-    margin: auto;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
   }
 
   i {
     color: white;
-    font-size: 62px;
+    font-size: 46px;
+    text-align: center;
   }
 
   .key {

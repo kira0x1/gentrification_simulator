@@ -1,32 +1,54 @@
 ﻿@using System
 @inherits Sandbox.UI.Panel
 
-<root class="slot-btn">
-    @if (KeyLabel != null)
-    {
-        <div class="key">@KeyLabel</div>
+<root class="slot-btn" onclick=@(() => OnClicked())>
+    @{
+        var btnClass = "inner-btn" + (IsOn ? " on" : " off");
+
+        if (ButtonType == ButtonTypes.Toggle)
+        {
+            btnClass += " blue";
+        }
     }
 
-    <button onclick=@OnClickAction>
-        <i>@Icon</i>
+    <div class=@btnClass>
+        @if (KeyLabel != null)
+        {
+            <div class="key">@KeyLabel</div>
+        }
 
-    </button>
+        @if (Icon != null)
+        {
+            <button>
+                <i>@Icon</i>
+            </button>
+        }
+    </div>
 </root>
 
 @code
 {
+    public enum ButtonTypes
+    {
+        Normal,
+        Toggle
+    }
+
+    public bool IsOn { get; set; }
+    public ButtonTypes ButtonType { get; set; }
     public string KeyLabel { get; set; }
     public string Icon { get; set; }
     public Action OnClickAction { get; set; }
-    protected override int BuildHash() => HashCode.Combine(Icon, KeyLabel);
 
-    public SlotBtn(string icon, string keyLabel)
+    private void OnClicked()
     {
-        this.Icon = icon;
-        this.KeyLabel = keyLabel;
+        if (ButtonType == ButtonTypes.Toggle)
+        {
+            IsOn = !IsOn;
+        }
+
+        OnClickAction?.Invoke();
     }
 
-    public SlotBtn()
-    {
-    }
+    protected override int BuildHash() => HashCode.Combine(Icon, KeyLabel, IsOn);
 }

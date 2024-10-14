@@ -5,31 +5,47 @@
 @namespace Sandbox
 
 <root>
+
+    @* City Stats *@
     <div class="stats">
         <StatText Label="Gdp" Value=@($"{City.CityState.CityIncome}")/>
         <StatText Label="Population" Value=@($"{City.Population}")/>
         <StatText Label="Homeless" Value=@($"{City.Homelessness}")/>
     </div>
-    <div class="action-menu">
-        <div class="container grid">
-            <SlotBtn Icon="group_add" KeyLabel="1" OnClickAction=@(() => CityManager.SpawnCitizen())/>
-            <SlotBtn Icon="science"/>
-            <SlotBtn/>
-            <SlotBtn/>
-            <SlotBtn/>
-            <SlotBtn/>
-            <SlotBtn/>
-            <SlotBtn/>
-            <SlotBtn/>
-        </div>
+
+    @* Action Menu *@
+    <div class="menu-bar">
+        <SlotBtn ButtonType=@SlotBtn.ButtonTypes.Toggle Icon="storefront" OnClickAction=@(() => { ShopOpen = !ShopOpen; })/>
+        <SlotBtn/>
+        <SlotBtn/>
+        <SlotBtn/>
     </div>
-    <navbar>
+
+    @if (ShopOpen)
+    {
+        <div class="action-menu">
+            <div class="container grid">
+                <SlotBtn Icon="rocket_launch" OnClickAction=@(() => CityManager.SpawnCitizen())/>
+                <SlotBtn Icon="science"/>
+                <SlotBtn/>
+                <SlotBtn/>
+                <SlotBtn/>
+                <SlotBtn/>
+                <SlotBtn/>
+                <SlotBtn/>
+                <SlotBtn/>
+            </div>
+        </div>
+    }
+
+    @* Bottom Ability Bar *@
+    <div class="hotbar">
         <SlotBtn Icon="group_add" KeyLabel="1" OnClickAction=@(() => CityManager.SpawnCitizen())/>
         <SlotBtn Icon="camera" KeyLabel="2" OnClickAction=@(() => Camera.ResetView())/>
         <SlotBtn/>
         <SlotBtn/>
-    </navbar>
-    <div class="sidebar"></div>
+    </div>
+
 
     @* Arrows - Camera View *@
     <div class="arrow left">
@@ -47,7 +63,9 @@
     private PlayerCamera Camera { get; set; }
     private City City { get; set; }
     private CityManager CityManager { get; set; }
-    public readonly CityAction[] cityActions = new CityAction[4];
+    public readonly GameAction[] cityActions = new GameAction[4];
+    private bool ShopOpen { get; set; }
+
 
     protected override void OnAwake()
     {
@@ -59,10 +77,10 @@
         Camera = Scene.GetAllComponents<PlayerCamera>().FirstOrDefault();
 
         City = CityManager.City;
-        cityActions[0] = new CityAction(() => CityManager.SpawnCitizen(), 0.25f);
-        cityActions[1] = new CityAction(() => Camera.TurnView(-30), 0.1f);
-        cityActions[2] = new CityAction(() => Camera.TurnView(30), 0.1f);
-        cityActions[3] = new CityAction(() => Camera.ResetView(), 0.1f);
+        cityActions[0] = new GameAction(() => CityManager.SpawnCitizen(), 0.25f);
+        cityActions[1] = new GameAction(() => Camera.TurnView(-30), 0.1f);
+        cityActions[2] = new GameAction(() => Camera.TurnView(30), 0.1f);
+        cityActions[3] = new GameAction(() => Camera.ResetView(), 0.1f);
     }
 
     protected override void OnStart()

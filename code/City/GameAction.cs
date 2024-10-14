@@ -2,7 +2,7 @@
 
 using System;
 
-public class CityAction
+public class GameAction
 {
     public string Name { get; set; }
     public string Icon { get; set; }
@@ -10,13 +10,13 @@ public class CityAction
     public TimeSince TimeSinceLastUse { get; set; }
     public Action OnUseAction { get; set; }
 
-    public CityAction(Action onUseAction, float coolDown = 1f)
+    public GameAction(Action onUseAction, float coolDown = 1f)
     {
         this.OnUseAction = onUseAction;
         this.Cooldown = coolDown;
     }
 
-    public CityAction(string name, string icon, Action onUseAction, float cooldown = 1f)
+    public GameAction(string name, string icon, Action onUseAction, float cooldown = 1f)
     {
         this.Name = name;
         this.Icon = icon;
