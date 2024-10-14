@@ -47,10 +47,8 @@ public class CityManager : Component
     {
         var citizenData = GenerateCitizenData();
         var cam = PlayerCam.Camera;
-        var pos = cam.WorldPosition.WithZ(15) + cam.LocalTransform.Forward * 250f;
-
-
-        var clone = CitizenPrefab.Clone(pos);
+        var pos = cam.WorldPosition + cam.LocalTransform.Forward * 350f;
+        var clone = CitizenPrefab.Clone(pos.WithZ(0));
 
         CitizenAI ai = clone.Components.Get<CitizenAI>();
         ai.SetCitizenState(citizenData);
