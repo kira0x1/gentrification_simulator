@@ -58,8 +58,8 @@ public class CityManager : Component
 
         ai.OnCitizenSelected += OnCitizenSelected;
         ai.OnCitizenDeselected += OnCitizienDeselect;
-        citizenData.container.Apply(ai.Anim.Target);
 
+        citizenData.container.Apply(ai.Anim.Target);
 
         CityCitizens.Add(ai);
         City.Population++;
