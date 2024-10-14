@@ -47,7 +47,7 @@
     private PlayerCamera Camera { get; set; }
     private City City { get; set; }
     private CityManager CityManager { get; set; }
-    public readonly CityAction[] cityActions = new CityAction[1];
+    public readonly CityAction[] cityActions = new CityAction[4];
 
     protected override void OnAwake()
     {
@@ -59,7 +59,10 @@
         Camera = Scene.GetAllComponents<PlayerCamera>().FirstOrDefault();
 
         City = CityManager.City;
-        cityActions[0] = new CityAction(() => CityManager.SpawnCitizen(), 0.5f);
+        cityActions[0] = new CityAction(() => CityManager.SpawnCitizen(), 0.25f);
+        cityActions[1] = new CityAction(() => Camera.TurnView(-30), 0.1f);
+        cityActions[2] = new CityAction(() => Camera.TurnView(30), 0.1f);
+        cityActions[3] = new CityAction(() => Camera.ResetView(), 0.1f);
     }
 
     protected override void OnStart()
@@ -76,7 +79,17 @@
 
         if (Input.Down("Slot2"))
         {
-            Camera.ResetView();
+            cityActions[3].Use();
+        }
+
+        if (Input.Released("Left"))
+        {
+            cityActions[2].Use();
+        }
+
+        if (Input.Released("Right"))
+        {
+            cityActions[1].Use();
         }
     }
 
