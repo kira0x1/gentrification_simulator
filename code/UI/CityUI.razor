@@ -28,8 +28,8 @@
             <div class="container grid">
                 <SlotBtn Icon="rocket_launch" OnClickAction=@(() => CityManager.SpawnCitizen())/>
                 <SlotBtn Icon="science"/>
-                <SlotBtn/>
-                <SlotBtn/>
+                <SlotBtn Icon="falling-star.png" BtnStyle=@SlotBtn.ButtonStyles.Sprite Label="220"/>
+                <SlotBtn Icon="ac_unit"/>
                 <SlotBtn/>
                 <SlotBtn/>
                 <SlotBtn/>
@@ -41,8 +41,8 @@
 
     @* Bottom Ability Bar *@
     <div class="hotbar">
-        <SlotBtn Icon="group_add" KeyLabel="1" OnClickAction=@(() => CityManager.SpawnCitizen())/>
-        <SlotBtn Icon="camera" KeyLabel="2" OnClickAction=@(() => Camera.ResetView())/>
+        <SlotBtn Icon="group_add" Label="1" OnClickAction=@(() => CityManager.SpawnCitizen())/>
+        <SlotBtn Icon="camera" Label="2" OnClickAction=@(() => Camera.ResetView())/>
         <SlotBtn/>
         <SlotBtn/>
     </div>

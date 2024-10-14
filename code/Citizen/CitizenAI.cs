@@ -3,6 +3,21 @@
 using System;
 using Sandbox.Citizen;
 
+public enum CitizenType
+{
+    Artist,
+    Hipster,
+    OfficeWorker,
+    Teenager,
+    DrugLord,
+    Old,
+    Dwarven,
+    Demon,
+    Nerd,
+    TechBro,
+    BourgeoisieHipster,
+}
+
 public partial class CitizenAI : Component, ISelectable
 {
     public NavMeshAgent Agent { get; set; }

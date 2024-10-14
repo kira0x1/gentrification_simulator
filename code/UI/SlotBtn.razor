@@ -13,16 +13,24 @@
         if (IsDisabled) btnClass += " disabled";
     }
 
-    <div class=@btnClass>
-        @if (KeyLabel != null)
-        {
-            <div class="key">@KeyLabel</div>
-        }
+    @{
+        var btnStyle = BtnStyle == ButtonStyles.Material ? "" : $"background:url('icons/{Icon}')";
+        var innerBtnClass = BtnStyle == ButtonStyles.Sprite ? "sprite" : "";
+    }
 
+    <div class=@btnClass>
         @if (Icon != null)
         {
-            <button>
-                <i>@Icon</i>
+            <button style=@btnStyle class=@innerBtnClass>
+                @if (Label != null)
+                {
+                    <div class="key">@Label</div>
+                }
+
+                @if (BtnStyle == ButtonStyles.Material)
+                {
+                    <i>@Icon</i>
+                }
             </button>
         }
     </div>
@@ -36,9 +44,16 @@
         Toggle
     }
 
+    public enum ButtonStyles
+    {
+        Material,
+        Sprite
+    }
+
     public bool IsOn { get; set; }
     public ButtonTypes ButtonType { get; set; }
-    public string KeyLabel { get; set; }
+    public ButtonStyles BtnStyle { get; set; }
+    public string Label { get; set; }
     public string Icon { get; set; }
     public Action OnClickAction { get; set; }
     public bool IsDisabled { get; set; }
@@ -53,5 +68,5 @@
         OnClickAction?.Invoke();
     }
 
-    protected override int BuildHash() => HashCode.Combine(Icon, KeyLabel, IsOn, IsDisabled);
+    protected override int BuildHash() => HashCode.Combine(Icon, Label, IsOn, IsDisabled);
 }
