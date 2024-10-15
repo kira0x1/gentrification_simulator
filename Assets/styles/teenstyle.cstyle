@@ -1,0 +1,44 @@
+{
+  "Shirt": [
+  "models/citizen_clothes/jumper/loose_jumper/loose_jumper_wooly.clothing",
+  "models/citizen_clothes/shirt/longsleeve_shirt/longsleeve_shirt.clothing",
+  "models/citizen_clothes/shirt/tshirt/tshirt.clothing",
+  "models/citizen_clothes/jumper/loose_jumper/loose_jumper.clothing"
+  ],
+  "Jacket": [
+  "models/citizen_clothes/jacket/sleeveless_jacket/sleeveless_jacket.clothing",
+  "models/citizen_clothes/jacket/biker_jacket/biker_jacket.clothing"
+],
+  "Pants": [
+  "models/citizen_clothes/trousers/trackiebottoms/trackie_bottoms.clothing",
+  "models/citizen_clothes/trousers/trackiebottoms/trackie_bottoms_black.clothing",
+  "models/citizen_clothes/trousers/loosejeans/loose_jeans.clothing"
+],
+  "Shoes": [
+  "models/citizen_clothes/shoes/sneakers/blue_sneakers.clothing"
+],
+  "Hair": [
+  "models/citizen_clothes/hat/beanie/beanie_green.clothing",
+  "models/citizen_clothes/hat/beanie/beanie_red.clothing",
+  "models/citizen_clothes/hat/baseball_cap/baseball_cap_blue_white.clothing",
+  "models/citizen_clothes/hat/baseball_cap/baseball_cap_black.clothing",
+  "models/citizen_clothes/hair/hair_longbob/hair_longbob.clothing",
+  "models/citizen_clothes/hair/hair_shortscruffy/hair_shortscruffy_brown.clothing",
+  "models/citizen_clothes/hair/hair_mullet/hair_mullet.clothing"
+],
+  "Beard": [
+  "models/citizen_clothes/hair/patchy_beard/patchy_beard.clothing"
+],
+  "HairColors": [
+    "0,0,0,1",
+    "0.32558,0.32558,0.32558,1",
+    "0.73953,0.73953,0.73953,1",
+    "0.30698,0.26243,0.20418,1",
+    "0.64186,0.57966,0.49259,1",
+    "0.49302,0.14676,0.14676,1",
+    "0.49627,0.64035,0.68837,1"
+  ],
+  "JacketChance": 0.2,
+  "__references": [],
+  "__version": 0
+}

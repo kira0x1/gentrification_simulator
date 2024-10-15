@@ -3,19 +3,17 @@
 using System;
 using static ClothingContainer;
 
-[GameResource("CitizenStyle", "cstyle", "citizen clothing", Icon = "style")]
+[GameResource("CitizenStyle", "cstyle", "citizen clothing", Icon = "style"), Serializable]
 public class CitizenStyle : GameResource
 {
-    public ClothingContainer ClothingContainer { get; set; }
+    [Property] public List<Clothing> Shirt { get; set; } = new List<Clothing>();
+    [Property] public List<Clothing> Jacket { get; set; } = new List<Clothing>();
+    [Property] public List<Clothing> Pants { get; set; } = new List<Clothing>();
+    [Property] public List<Clothing> Shoes { get; set; } = new List<Clothing>();
+    [Property] public List<Clothing> Hair { get; set; } = new List<Clothing>();
+    [Property] public List<Clothing> Beard { get; set; } = new List<Clothing>();
 
-    [Property] public readonly List<Clothing> Shirt = new List<Clothing>();
-    [Property] public readonly List<Clothing> Jacket = new List<Clothing>();
-    [Property] public readonly List<Clothing> Pants = new List<Clothing>();
-    [Property] public readonly List<Clothing> Shoes = new List<Clothing>();
-    [Property] public readonly List<Clothing> Hair = new List<Clothing>();
-    [Property] public readonly List<Clothing> Beard = new List<Clothing>();
-
-    [Property] public readonly List<Color> HairColors = new List<Color>
+    [Property] public List<Color> HairColors { get; set; } = new List<Color>
     {
         new Color(0, 0, 0, 1),
         new Color(0.32558f, 0.32558f, 0.32558f, 1),
@@ -33,44 +31,11 @@ public class CitizenStyle : GameResource
     {
         CitizenState citizenData = new CitizenState();
 
-        Clothing pants = Random.Shared.FromList(Pants);
-        Clothing shirt = Random.Shared.FromList(Shirt);
-        Clothing hair = Random.Shared.FromList(Hair);
-        Clothing shoes = Random.Shared.FromList(Shoes);
-        Clothing beard = Random.Shared.FromList(Beard);
-        Clothing jacket = Random.Shared.FromList(Jacket);
-
-
-        var pantsEntry = new ClothingEntry(pants);
-        var shirtEntry = new ClothingEntry(shirt);
-        var hairEntry = new ClothingEntry(hair);
-        var shoesEntry = new ClothingEntry(shoes);
-        var beardEntry = new ClothingEntry(beard);
-
-        ClothingContainer container = new ClothingContainer();
-        container.Clothing.Add(pantsEntry);
-        container.Clothing.Add(shirtEntry);
-        container.Clothing.Add(hairEntry);
-        container.Clothing.Add(shoesEntry);
-
-
-        citizenData.shirtClothes = shirt;
-        citizenData.pantsClothing = pants;
 
         bool hasBeard = Beard.Count > 0 && Random.Shared.Float(0, 1) > 0.6f;
         bool hasJacket = Random.Shared.Float(0, 1) < JacketChance;
 
-        if (hasBeard)
-        {
-            // Make it a little darker then hair
-            container.Clothing.Add(beardEntry);
-        }
-
-        if (hasJacket)
-        {
-            var jacketEntry = new ClothingEntry(jacket);
-            container.Clothing.Add(jacketEntry);
-        }
+        ClothingContainer container = GenerateClothing(hasBeard, hasJacket);
 
         citizenData.hasBeard = hasBeard;
         citizenData.firstName = RandomNames.RandomFirstName;
@@ -80,27 +45,37 @@ public class CitizenStyle : GameResource
         return citizenData;
     }
 
-    public ClothingContainer GenerateClothing()
+    public ClothingContainer GenerateClothing(bool hasJacket, bool hasBeard)
     {
         Clothing pants = Random.Shared.FromList(Pants);
         Clothing shirt = Random.Shared.FromList(Shirt);
         Clothing hair = Random.Shared.FromList(Hair);
         Clothing shoes = Random.Shared.FromList(Shoes);
-        Clothing beard = Random.Shared.FromList(Beard);
-
 
         var pantsEntry = new ClothingEntry(pants);
         var shirtEntry = new ClothingEntry(shirt);
         var hairEntry = new ClothingEntry(hair);
         var shoesEntry = new ClothingEntry(shoes);
-        var beardEntry = new ClothingEntry(beard);
 
         ClothingContainer container = new ClothingContainer();
         container.Clothing.Add(pantsEntry);
         container.Clothing.Add(shirtEntry);
         container.Clothing.Add(hairEntry);
         container.Clothing.Add(shoesEntry);
-        container.Clothing.Add(beardEntry);
+
+        if (hasBeard)
+        {
+            Clothing beard = Random.Shared.FromList(Beard);
+            var beardEntry = new ClothingEntry(beard);
+            container.Clothing.Add(beardEntry);
+        }
+
+        if (hasJacket)
+        {
+            Clothing jacket = Random.Shared.FromList(Jacket);
+            var jacketEntry = new ClothingEntry(jacket);
+            container.Clothing.Add(jacketEntry);
+        }
 
         return container;
     }
