@@ -22,7 +22,7 @@ public static class RandomNames
     {
         try
         {
-            Data = FileSystem.Mounted.ReadJson<NamesDataRoot>("Citizen/RandomNames.json");
+            Data = FileSystem.Mounted.ReadJson<NamesDataRoot>("Util/RandomNames.json");
             Names = Data.Names;
         }
         catch (Exception ex)

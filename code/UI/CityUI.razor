@@ -26,7 +26,7 @@
     {
         <div class="action-menu">
             <div class="container grid">
-                <SlotBtn Icon="rocket_launch" OnClickAction=@(() => CityManager.SpawnCitizen())/>
+                <SlotBtn Icon="rocket_launch" OnClickAction=@(() => cityActions[0].Use())/>
                 <SlotBtn Icon="science"/>
                 <SlotBtn Icon="falling-star.png" BtnStyle=@SlotBtn.ButtonStyles.Sprite Label="220"/>
                 <SlotBtn Icon="ac_unit"/>
@@ -41,7 +41,7 @@
 
     @* Bottom Ability Bar *@
     <div class="hotbar">
-        <SlotBtn Icon="group_add" Label="1" OnClickAction=@(() => CityManager.SpawnCitizen())/>
+        <SlotBtn Icon="group_add" Label="1" OnClickAction=@(() => cityActions[0].Use())/>
         <SlotBtn Icon="camera" Label="2" OnClickAction=@(() => Camera.ResetView())/>
         <SlotBtn/>
         <SlotBtn/>
@@ -92,7 +92,7 @@
         Camera = Scene.GetAllComponents<PlayerCamera>().FirstOrDefault();
 
         City = CityManager.City;
-        cityActions[0] = new GameAction(() => CityManager.SpawnCitizen(), 0.25f);
+        cityActions[0] = new GameAction(() => CityManager.SpawnCitizen(CitizenType.Teenager), 0.25f);
         cityActions[1] = new GameAction(() => Camera.TurnView(-30), 0.1f);
         cityActions[2] = new GameAction(() => Camera.TurnView(30), 0.1f);
         cityActions[3] = new GameAction(() => Camera.ResetView(), 0.1f);

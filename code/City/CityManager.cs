@@ -12,21 +12,27 @@ public class CityManager : Component
     [Property, Range(0, 100)] public float CitizenMaxSpeed { get; set; } = 60;
 
     [Property, Group("Citizen")] private GameObject CitizenPrefab { get; set; }
-    [Property, Group("Citizen")] public readonly List<Color> HairColors = new List<Color>();
+
     [Property, Group("Citizen")] public readonly List<Model> Pants = new List<Model>();
     [Property, Group("Citizen")] public readonly List<Model> Shirt = new List<Model>();
     [Property, Group("Citizen")] public readonly List<Model> Hair = new List<Model>();
     [Property, Group("Citizen")] public readonly List<Model> Beard = new List<Model>();
+    [Property, Group("Citizen/Colors")] public readonly List<Color> HairColors = new List<Color>();
 
     [Property] private SelectedWorldUI SelectedUI { get; set; }
+
+    // ReSharper disable once CollectionNeverUpdated.Local
+    [Property] private readonly Dictionary<CitizenType, CitizenStyle> CitizenStyles = new Dictionary<CitizenType, CitizenStyle>();
 
     protected override void OnAwake()
     {
         CityCitizens = Scene.GetAllComponents<CitizenAI>().ToList();
         PlayerCam = Scene.GetAllComponents<PlayerCamera>().FirstOrDefault();
-
         RandomNames.Init();
+    }
 
+    protected override void OnStart()
+    {
         foreach (CitizenAI citizen in CityCitizens)
         {
             citizen.OnCitizenSelected += OnCitizenSelected;
@@ -34,15 +40,20 @@ public class CityManager : Component
 
             citizen.Agent.MaxSpeed = CitizenMaxSpeed;
             citizen.Agent.Acceleration = CitizenAcceleration;
-            citizen.SetCitizenState(GenerateCitizenData());
+            // citizen.SetCitizenState(GenerateCitizenData(CitizenType.OfficeWorker));
         }
 
         City.Population = CityCitizens.Count;
     }
 
-    public void SpawnCitizen()
+    /// <summary>
+    /// Spawn a citizen with a distinct style
+    /// </summary>
+    /// <param name="citizenType"></param>
+    public void SpawnCitizen(CitizenType citizenType = CitizenType.OfficeWorker)
     {
-        var citizenData = GenerateCitizenData();
+        CitizenState citizenData = GenerateCitizenData(citizenType);
+
         var cam = PlayerCam.Camera;
         var pos = cam.WorldPosition + cam.LocalTransform.Forward * 350f;
         var clone = CitizenPrefab.Clone(pos.WithZ(0));
@@ -75,20 +86,9 @@ public class CityManager : Component
         SelectedUI.GameObject.Enabled = false;
     }
 
-    public CitizenState GenerateCitizenData()
+    public CitizenState GenerateCitizenData(CitizenType style)
     {
-        CitizenState citizenData = new CitizenState();
-
-        citizenData.hairColor = Random.Shared.FromList(HairColors);
-        citizenData.pantsModel = Random.Shared.FromList(Pants);
-        citizenData.shirtModel = Random.Shared.FromList(Shirt);
-        citizenData.hairModel = Random.Shared.FromList(Hair);
-        citizenData.beardModel = Random.Shared.FromList(Beard);
-        citizenData.hasBeard = Random.Shared.Float(0, 1) > 0.6f;
-
-        citizenData.firstName = RandomNames.RandomFirstName;
-        citizenData.lastName = RandomNames.RandomLastName;
-
-        return citizenData;
+        CitizenStyle cs = CitizenStyles[style];
+        return cs.GenerateCitizenData();
     }
 }
