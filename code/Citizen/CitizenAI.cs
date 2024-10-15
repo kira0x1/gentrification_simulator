@@ -53,6 +53,12 @@ public partial class CitizenAI : Component, ISelectable
     public void SetCitizenState(CitizenState state)
     {
         CitizenState = state;
+        CitizenState.container.Apply(Anim.Target);
+
+        foreach ((string bodyGroup, int value) in CitizenState.container.GetBodyGroups())
+        {
+            Anim.Target.SetBodyGroup(bodyGroup, value);
+        }
     }
 
     protected override void OnStart()

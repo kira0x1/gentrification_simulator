@@ -26,11 +26,9 @@ public class CitizenStyle : GameResource
 
     [Property, Range(0, 1)] public float JacketChance { get; set; } = 0.2f;
 
-
     public CitizenState GenerateCitizenData()
     {
         CitizenState citizenData = new CitizenState();
-
 
         bool hasBeard = Beard.Count > 0 && Random.Shared.Float(0, 1) > 0.6f;
         bool hasJacket = Random.Shared.Float(0, 1) < JacketChance;
@@ -48,12 +46,13 @@ public class CitizenStyle : GameResource
     public ClothingContainer GenerateClothing(bool hasJacket, bool hasBeard)
     {
         Clothing pants = Random.Shared.FromList(Pants);
-        Clothing shirt = Random.Shared.FromList(Shirt);
         Clothing hair = Random.Shared.FromList(Hair);
         Clothing shoes = Random.Shared.FromList(Shoes);
+        Clothing jacket = Random.Shared.FromList(Jacket);
+        Clothing shirt = hasJacket ? Random.Shared.FromList(Shirt.FindAll(s => s.CanBeWornWith(jacket)).ToList()) : Random.Shared.FromList(Shirt);
 
-        var pantsEntry = new ClothingEntry(pants);
         var shirtEntry = new ClothingEntry(shirt);
+        var pantsEntry = new ClothingEntry(pants);
         var hairEntry = new ClothingEntry(hair);
         var shoesEntry = new ClothingEntry(shoes);
 
@@ -72,7 +71,6 @@ public class CitizenStyle : GameResource
 
         if (hasJacket)
         {
-            Clothing jacket = Random.Shared.FromList(Jacket);
             var jacketEntry = new ClothingEntry(jacket);
             container.Clothing.Add(jacketEntry);
         }

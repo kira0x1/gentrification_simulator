@@ -1,7 +1,5 @@
 ﻿namespace Kira;
 
-using Utils;
-
 public struct CitizenState
 {
     public string firstName;

@@ -1,0 +1,44 @@
+{
+  "Shirt": [
+    "models/citizen_clothes/jacket/suitjacket/jacket.suit.clothing",
+    "models/citizen_clothes/jacket/office_blazer/office_blazer.clothing",
+    "models/citizen_clothes/shirt/flannel_shirt/variations/blue_shirt/blue_shirt.clothing",
+    "models/citizen_clothes/jumper/sleeveless_jumper/sleeveless_jumper.clothing",
+    "models/citizen_clothes/shirt/buttoned_shirt/buttoned_shirt.clothing",
+    "models/citizen_clothes/shirt/buttoned_shirt/buttoned_shirt_blue.clothing"
+  ],
+  "Jacket": [
+    "models/citizen_clothes/jacket/smart_jacket/smart_jacket.clothing"
+  ],
+  "Pants": [
+    "models/citizen_clothes/trousers/smarttrousers/trousers.smart.clothing",
+    "models/citizen_clothes/trousers/cargopants/brown_cargo_pants.clothing"
+  ],
+  "Shoes": [
+    "models/citizen_clothes/shoes/smartshoes/smartshoes.clothing",
+    "models/citizen_clothes/shoes/flatshoes/textures/flat_shoes.clothing"
+  ],
+  "Hair": [
+    "models/citizen_clothes/hair/hair_looseblonde/hair.loose.brown.clothing",
+    "models/citizen_clothes/hair/hair_looseblonde/hair.loose.blonde.clothing",
+    "models/citizen_clothes/hair/hair_balding/hair_baldingbrown.clothing",
+    "models/citizen_clothes/hair/medium_beard/medium_beard.clothing"
+  ],
+  "Beard": [
+    "models/citizen_clothes/hair/medium_beard/medium_beard.clothing",
+    "models/citizen_clothes/hair/moustache/moustache.clothing",
+    "models/citizen_clothes/hair/decorated_beard/decorated_beard.clothing"
+  ],
+  "HairColors": [
+    "0,0,0,1",
+    "0.32558,0.32558,0.32558,1",
+    "0.73953,0.73953,0.73953,1",
+    "0.30698,0.26243,0.20418,1",
+    "0.64186,0.57966,0.49259,1",
+    "0.49302,0.14676,0.14676,1",
+    "0.49627,0.64035,0.68837,1"
+  ],
+  "JacketChance": 0.4,
+  "__references": [],
+  "__version": 0
+}
