@@ -663,41 +663,15 @@
         {
           "__type": "Kira.CityManager",
           "__guid": "fbbb3aeb-e4f6-4836-ba8a-3cc9145477f0",
-          "Beard": [
-            "models/citizen_clothes/hair/medium_beard/models/medium_beard.vmdl",
-            "models/citizen_clothes/hair/patchy_beard/models/patchy_beard.vmdl"
-          ],
-          "CitizenStyles": {
-            "Teenager": "styles/teenager style.cstyle",
-            "OfficeWorker": "styles/office style.cstyle"
-          },
-          "Hair": [
-            "models/citizen_clothes/hair/hair_shortscruffy/models/hair_shortscruffy.vmdl",
-            "models/citizen_clothes/hair/hair_looseblonde/hair_looseblonde.vmdl"
-          ],
-          "HairColors": [
-            "0,0,0,1",
-            "0.32558,0.32558,0.32558,1",
-            "0.73953,0.73953,0.73953,1",
-            "0.30698,0.26243,0.20418,1",
-            "0.64186,0.57966,0.49259,1",
-            "0.49302,0.14676,0.14676,1",
-            "0.49627,0.64035,0.68837,1"
-          ],
-          "Pants": [
-            "models/citizen_clothes/trousers/smarttrousers/smarttrousers.vmdl",
-            "models/citizen_clothes/trousers/loosetrousers/models/loose_trousers.vmdl"
-          ],
-          "Shirt": [
-            "models/citizen_clothes/shirt/buttoned_shirt/models/buttoned_shirt.vmdl",
-            "models/citizen_clothes/shirt/buttoned_shirt/models/buttoned_shirt_blue.vmdl",
-            "models/citizen_clothes/shirt/flannel_shirt/models/flannel_shirt.vmdl"
-          ],
           "CitizenAcceleration": 80,
           "CitizenMaxSpeed": 60,
           "CitizenPrefab": {
             "_type": "gameobject",
             "prefab": "prefabs/citizen prefab.prefab"
+          },
+          "CitizenStyles": {
+            "OfficeWorker": "styles/office style.cstyle",
+            "Teenager": "styles/teenager style.cstyle"
           },
           "SelectedUI": {
             "_type": "component",

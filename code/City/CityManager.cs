@@ -12,17 +12,10 @@ public class CityManager : Component
     [Property, Range(0, 100)] public float CitizenMaxSpeed { get; set; } = 60;
 
     [Property, Group("Citizen")] private GameObject CitizenPrefab { get; set; }
-
-    [Property, Group("Citizen")] public readonly List<Model> Pants = new List<Model>();
-    [Property, Group("Citizen")] public readonly List<Model> Shirt = new List<Model>();
-    [Property, Group("Citizen")] public readonly List<Model> Hair = new List<Model>();
-    [Property, Group("Citizen")] public readonly List<Model> Beard = new List<Model>();
-    [Property, Group("Citizen/Colors")] public readonly List<Color> HairColors = new List<Color>();
-
     [Property] private SelectedWorldUI SelectedUI { get; set; }
 
-    // ReSharper disable once CollectionNeverUpdated.Local
-    [Property] private readonly Dictionary<CitizenType, CitizenStyle> CitizenStyles = new Dictionary<CitizenType, CitizenStyle>();
+    // ReSharper disable once CollectionNeverUpdated.Global
+    [Property] public Dictionary<CitizenType, CitizenStyle> CitizenStyles { get; set; } = new Dictionary<CitizenType, CitizenStyle>();
 
     protected override void OnAwake()
     {
